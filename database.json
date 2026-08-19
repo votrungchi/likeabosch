@@ -1,0 +1,362 @@
+[
+  {
+    "id": "1",
+    "hanzi": "教学楼",
+    "pinyin": "jiào xué lóu",
+    "level": "HSK 3",
+    "mean_en": "teaching building",
+    "mean_vi": "tòa nhà học thuật",
+    "pos_en": "Noun",
+    "pos_vi": "Danh từ",
+    "sentences": [
+      { "hanzi": "教学楼在那儿。", "pinyin": "Jiàoxuélóu zài nàr.", "en": "The teaching building is there.", "vi": "Tòa nhà học ở đằng kia." },
+      { "hanzi": "我们去教学楼。", "pinyin": "Wǒmen qù jiàoxuélóu.", "en": "We go to the teaching building.", "vi": "Chúng tôi đi đến tòa nhà học." },
+      { "hanzi": "这个教学楼很大。", "pinyin": "Zhège jiàoxuélóu hěn dà.", "en": "This teaching building is very big.", "vi": "Tòa nhà học này rất to." }
+    ]
+  },
+  {
+    "id": "2",
+    "hanzi": "教学",
+    "pinyin": "jiào xué",
+    "level": "HSK 4",
+    "mean_en": "teaching / education",
+    "mean_vi": "giảng dạy",
+    "pos_en": "Noun/Verb",
+    "pos_vi": "Danh/Động từ",
+    "sentences": [
+      { "hanzi": "他喜欢教学。", "pinyin": "Tā xǐhuān jiàoxué.", "en": "He likes teaching.", "vi": "Anh ấy thích giảng dạy." },
+      { "hanzi": "老师的教学很好。", "pinyin": "Lǎoshī de jiàoxué hěn hǎo.", "en": "The teacher's teaching is very good.", "vi": "Sự giảng dạy của giáo viên rất tốt." },
+      { "hanzi": "我们今天没有教学。", "pinyin": "Wǒmen jīntiān méiyǒu jiàoxué.", "en": "We have no teaching today.", "vi": "Hôm nay chúng tôi không có tiết dạy." }
+    ]
+  },
+  {
+    "id": "3",
+    "hanzi": "楼",
+    "pinyin": "lóu",
+    "level": "HSK 3",
+    "mean_en": "building / floor",
+    "mean_vi": "lầu / tòa nhà",
+    "pos_en": "Noun",
+    "pos_vi": "Danh từ",
+    "sentences": [
+      { "hanzi": "我在楼上。", "pinyin": "Wǒ zài lóushàng.", "en": "I am upstairs.", "vi": "Tôi ở trên lầu." },
+      { "hanzi": "这个楼很大。", "pinyin": "Zhège lóu hěn dà.", "en": "This building is very big.", "vi": "Tòa nhà này rất to." },
+      { "hanzi": "他在楼下吃饭。", "pinyin": "Tā zài lóuxià chīfàn.", "en": "He is eating downstairs.", "vi": "Anh ấy đang ăn cơm ở dưới lầu." }
+    ]
+  },
+  {
+    "id": "4",
+    "hanzi": "在",
+    "pinyin": "zài",
+    "level": "HSK 1",
+    "mean_en": "at / in / on",
+    "mean_vi": "ở / tại",
+    "pos_en": "Preposition",
+    "pos_vi": "Giới từ",
+    "sentences": [
+      { "hanzi": "我在家。", "pinyin": "Wǒ zài jiā.", "en": "I am at home.", "vi": "Tôi đang ở nhà." },
+      { "hanzi": "他在学校。", "pinyin": "Tā zài xuéxiào.", "en": "He is at school.", "vi": "Anh ấy đang ở trường." },
+      { "hanzi": "书在桌子上。", "pinyin": "Shū zài zhuōzi shàng.", "en": "The book is on the table.", "vi": "Sách ở trên bàn." }
+    ]
+  },
+  {
+    "id": "5",
+    "hanzi": "这儿",
+    "pinyin": "zhèr",
+    "level": "HSK 1",
+    "mean_en": "here",
+    "mean_vi": "ở đây",
+    "pos_en": "Pronoun",
+    "pos_vi": "Đại từ",
+    "sentences": [
+      { "hanzi": "我在这儿。", "pinyin": "Wǒ zài zhèr.", "en": "I am here.", "vi": "Tôi ở đây." },
+      { "hanzi": "这儿很大。", "pinyin": "Zhèr hěn dà.", "en": "It is very big here.", "vi": "Chỗ này rất to." },
+      { "hanzi": "他不在这儿。", "pinyin": "Tā bù zài zhèr.", "en": "He is not here.", "vi": "Anh ấy không ở đây." }
+    ]
+  },
+  {
+    "id": "6",
+    "hanzi": "图书馆",
+    "pinyin": "tú shū guǎn",
+    "level": "HSK 3",
+    "mean_en": "library",
+    "mean_vi": "thư viện",
+    "pos_en": "Noun",
+    "pos_vi": "Danh từ",
+    "sentences": [
+      { "hanzi": "图书馆在哪儿？", "pinyin": "Túshūguǎn zài nǎr?", "en": "Where is the library?", "vi": "Thư viện ở đâu?" },
+      { "hanzi": "我们去图书馆。", "pinyin": "Wǒmen qù túshūguǎn.", "en": "We go to the library.", "vi": "Chúng tôi đi thư viện." },
+      { "hanzi": "图书馆里有很多人。", "pinyin": "Túshūguǎn lǐ yǒu hěn duō rén.", "en": "There are many people in the library.", "vi": "Trong thư viện có rất nhiều người." }
+    ]
+  },
+  {
+    "id": "7",
+    "hanzi": "边",
+    "pinyin": "biān",
+    "level": "HSK 2",
+    "mean_en": "side",
+    "mean_vi": "bên / phía",
+    "pos_en": "Noun",
+    "pos_vi": "Danh từ",
+    "sentences": [
+      { "hanzi": "他在这边。", "pinyin": "Tā zài zhè biān.", "en": "He is on this side.", "vi": "Anh ấy ở bên này." },
+      { "hanzi": "医院在那边。", "pinyin": "Yīyuàn zài nà biān.", "en": "The hospital is on that side.", "vi": "Bệnh viện ở bên kia." },
+      { "hanzi": "里面有很多人。", "pinyin": "Lǐ biān yǒu hěn duō rén.", "en": "There are many people inside.", "vi": "Bên trong có rất nhiều người." }
+    ]
+  },
+  {
+    "id": "8",
+    "hanzi": "北边",
+    "pinyin": "běi biān",
+    "level": "HSK 3",
+    "mean_en": "north side",
+    "mean_vi": "phía bắc",
+    "pos_en": "Noun",
+    "pos_vi": "Danh từ",
+    "sentences": [
+      { "hanzi": "学校在北边。", "pinyin": "Xuéxiào zài běibiān.", "en": "The school is on the north side.", "vi": "Trường học ở phía bắc." },
+      { "hanzi": "他家在北边。", "pinyin": "Tā jiā zài běibiān.", "en": "His home is on the north side.", "vi": "Nhà anh ấy ở phía bắc." },
+      { "hanzi": "北边有什么？", "pinyin": "Běibiān yǒu shénme?", "en": "What is on the north side?", "vi": "Phía bắc có cái gì?" }
+    ]
+  },
+  {
+    "id": "9",
+    "hanzi": "西边",
+    "pinyin": "xī biān",
+    "level": "HSK 3",
+    "mean_en": "west side",
+    "mean_vi": "phía tây",
+    "pos_en": "Noun",
+    "pos_vi": "Danh từ",
+    "sentences": [
+      { "hanzi": "商店在西边。", "pinyin": "Shāngdiàn zài xībiān.", "en": "The shop is on the west side.", "vi": "Cửa hàng ở phía tây." },
+      { "hanzi": "我去西边。", "pinyin": "Wǒ qù xībiān.", "en": "I go to the west side.", "vi": "Tôi đi về phía tây." },
+      { "hanzi": "西边很大。", "pinyin": "Xībiān hěn dà.", "en": "The west side is very big.", "vi": "Phía tây rất rộng." }
+    ]
+  },
+  {
+    "id": "10",
+    "hanzi": "南边",
+    "pinyin": "nán biān",
+    "level": "HSK 3",
+    "mean_en": "south side",
+    "mean_vi": "phía nam",
+    "pos_en": "Noun",
+    "pos_vi": "Danh từ",
+    "sentences": [
+      { "hanzi": "医院在南边。", "pinyin": "Yīyuàn zài nánbiān.", "en": "The hospital is on the south side.", "vi": "Bệnh viện ở phía nam." },
+      { "hanzi": "他在南边工作。", "pinyin": "Tā zài nánbiān gōngzuò.", "en": "He works on the south side.", "vi": "Anh ấy làm việc ở phía nam." },
+      { "hanzi": "南边有火车站。", "pinyin": "Nánbiān yǒu huǒchēzhàn.", "en": "There is a train station on the south side.", "vi": "Phía nam có ga xe lửa." }
+    ]
+  },
+  {
+    "id": "11",
+    "hanzi": "运动场",
+    "pinyin": "yùn dòng chǎng",
+    "level": "HSK 4",
+    "mean_en": "sports field",
+    "mean_vi": "sân vận động",
+    "pos_en": "Noun",
+    "pos_vi": "Danh từ",
+    "sentences": [
+      { "hanzi": "运动场在哪儿？", "pinyin": "Yùndòngchǎng zài nǎr?", "en": "Where is the sports field?", "vi": "Sân vận động ở đâu?" },
+      { "hanzi": "我们去运动场吧。", "pinyin": "Wǒmen qù yùndòngchǎng ba.", "en": "Let's go to the sports field.", "vi": "Chúng ta đi sân vận động đi." },
+      { "hanzi": "运动场里有很多人。", "pinyin": "Yùndòngchǎng lǐ yǒu hěn duō rén.", "en": "There are many people in the sports field.", "vi": "Trong sân vận động có rất nhiều người." }
+    ]
+  },
+  {
+    "id": "12",
+    "hanzi": "体育馆",
+    "pinyin": "tǐ yù guǎn",
+    "level": "HSK 3",
+    "mean_en": "gymnasium",
+    "mean_vi": "nhà thi đấu",
+    "pos_en": "Noun",
+    "pos_vi": "Danh từ",
+    "sentences": [
+      { "hanzi": "他在体育馆。", "pinyin": "Tā zài tǐyùguǎn.", "en": "He is in the gym.", "vi": "Anh ấy đang ở nhà thi đấu." },
+      { "hanzi": "体育馆在前面。", "pinyin": "Tǐyùguǎn zài qiánmiàn.", "en": "The gym is in the front.", "vi": "Nhà thi đấu ở phía trước." },
+      { "hanzi": "那个体育馆很大。", "pinyin": "Nàge tǐyùguǎn hěn dà.", "en": "That gym is very big.", "vi": "Nhà thi đấu kia rất to." }
+    ]
+  },
+  {
+    "id": "13",
+    "hanzi": "饭馆",
+    "pinyin": "fàn guǎn",
+    "level": "HSK 2",
+    "mean_en": "restaurant",
+    "mean_vi": "nhà hàng",
+    "pos_en": "Noun",
+    "pos_vi": "Danh từ",
+    "sentences": [
+      { "hanzi": "这个饭馆很好。", "pinyin": "Zhège fànguǎn hěn hǎo.", "en": "This restaurant is very good.", "vi": "Nhà hàng này rất ngon." },
+      { "hanzi": "我们去饭馆吃饭。", "pinyin": "Wǒmen qù fànguǎn chīfàn.", "en": "We go to the restaurant to eat.", "vi": "Chúng ta ra nhà hàng ăn cơm." },
+      { "hanzi": "饭馆在后面。", "pinyin": "Fànguǎn zài hòumiàn.", "en": "The restaurant is in the back.", "vi": "Nhà hàng ở phía sau." }
+    ]
+  },
+  {
+    "id": "14",
+    "hanzi": "还",
+    "pinyin": "hái",
+    "level": "HSK 2",
+    "mean_en": "still / also",
+    "mean_vi": "vẫn / còn",
+    "pos_en": "Adverb",
+    "pos_vi": "Phó từ",
+    "sentences": [
+      { "hanzi": "他还在睡觉。", "pinyin": "Tā hái zài shuìjiào.", "en": "He is still sleeping.", "vi": "Anh ấy vẫn đang ngủ." },
+      { "hanzi": "我还要吃苹果。", "pinyin": "Wǒ hái yào chī píngguǒ.", "en": "I still want to eat apples.", "vi": "Tôi còn muốn ăn táo." },
+      { "hanzi": "还有谁去？", "pinyin": "Hái yǒu shéi qù?", "en": "Who else is going?", "vi": "Còn ai đi nữa?" }
+    ]
+  },
+  {
+    "id": "15",
+    "hanzi": "超市",
+    "pinyin": "chāo shì",
+    "level": "HSK 3",
+    "mean_en": "supermarket",
+    "mean_vi": "siêu thị",
+    "pos_en": "Noun",
+    "pos_vi": "Danh từ",
+    "sentences": [
+      { "hanzi": "我去超市买东西。", "pinyin": "Wǒ qù chāoshì mǎi dōngxi.", "en": "I go to the supermarket to buy things.", "vi": "Tôi đi siêu thị mua đồ." },
+      { "hanzi": "超市在学校前面。", "pinyin": "Chāoshì zài xuéxiào qiánmiàn.", "en": "The supermarket is in front of the school.", "vi": "Siêu thị ở phía trước trường học." },
+      { "hanzi": "那个超市很大。", "pinyin": "Nàge chāoshì hěn dà.", "en": "That supermarket is very big.", "vi": "Siêu thị kia rất to." }
+    ]
+  },
+  {
+    "id": "16",
+    "hanzi": "去",
+    "pinyin": "qù",
+    "level": "HSK 1",
+    "mean_en": "to go",
+    "mean_vi": "đi",
+    "pos_en": "Verb",
+    "pos_vi": "Động từ",
+    "sentences": [
+      { "hanzi": "我去学校。", "pinyin": "Wǒ qù xuéxiào.", "en": "I go to school.", "vi": "Tôi đi đến trường." },
+      { "hanzi": "你去哪儿？", "pinyin": "Nǐ qù nǎr?", "en": "Where are you going?", "vi": "Bạn đi đâu?" },
+      { "hanzi": "他不去了。", "pinyin": "Tā bù qù le.", "en": "He is not going anymore.", "vi": "Anh ấy không đi nữa." }
+    ]
+  },
+  {
+    "id": "17",
+    "hanzi": "哪儿",
+    "pinyin": "nǎr",
+    "level": "HSK 1",
+    "mean_en": "where",
+    "mean_vi": "ở đâu",
+    "pos_en": "Pronoun",
+    "pos_vi": "Đại từ",
+    "sentences": [
+      { "hanzi": "你在哪儿？", "pinyin": "Nǐ zài nǎr?", "en": "Where are you?", "vi": "Bạn đang ở đâu?" },
+      { "hanzi": "医院在哪儿？", "pinyin": "Yīyuàn zài nǎr?", "en": "Where is the hospital?", "vi": "Bệnh viện ở đâu?" },
+      { "hanzi": "我们去哪儿吃饭？", "pinyin": "Wǒmen qù nǎr chīfàn?", "en": "Where do we go to eat?", "vi": "Chúng ta đi đâu ăn cơm?" }
+    ]
+  },
+  {
+    "id": "18",
+    "hanzi": "银行",
+    "pinyin": "yín háng",
+    "level": "HSK 3",
+    "mean_en": "bank",
+    "mean_vi": "ngân hàng",
+    "pos_en": "Noun",
+    "pos_vi": "Danh từ",
+    "sentences": [
+      { "hanzi": "我去银行。", "pinyin": "Wǒ qù yínháng.", "en": "I go to the bank.", "vi": "Tôi đi ngân hàng." },
+      { "hanzi": "银行在哪儿？", "pinyin": "Yínháng zài nǎr?", "en": "Where is the bank?", "vi": "Ngân hàng ở đâu?" },
+      { "hanzi": "银行在火车站后面。", "pinyin": "Yínháng zài huǒchēzhàn hòumiàn.", "en": "The bank is behind the train station.", "vi": "Ngân hàng ở phía sau ga xe lửa." }
+    ]
+  },
+  {
+    "id": "19",
+    "hanzi": "知道",
+    "pinyin": "zhī dào",
+    "level": "HSK 2",
+    "mean_en": "to know",
+    "mean_vi": "biết",
+    "pos_en": "Verb",
+    "pos_vi": "Động từ",
+    "sentences": [
+      { "hanzi": "我不知道。", "pinyin": "Wǒ bù zhīdào.", "en": "I don't know.", "vi": "Tôi không biết." },
+      { "hanzi": "你知道吗？", "pinyin": "Nǐ zhīdào ma?", "en": "Do you know?", "vi": "Bạn có biết không?" },
+      { "hanzi": "他知道你在这儿。", "pinyin": "Tā zhīdào nǐ zài zhèr.", "en": "He knows you are here.", "vi": "Anh ấy biết bạn ở đây." }
+    ]
+  },
+  {
+    "id": "20",
+    "hanzi": "东边",
+    "pinyin": "dōng biān",
+    "level": "HSK 3",
+    "mean_en": "east side",
+    "mean_vi": "phía đông",
+    "pos_en": "Noun",
+    "pos_vi": "Danh từ",
+    "sentences": [
+      { "hanzi": "我家在东边。", "pinyin": "Wǒ jiā zài dōngbiān.", "en": "My home is on the east side.", "vi": "Nhà tôi ở phía đông." },
+      { "hanzi": "东边有商店。", "pinyin": "Dōngbiān yǒu shāngdiàn.", "en": "There are shops on the east side.", "vi": "Phía đông có cửa hàng." },
+      { "hanzi": "他去东边了。", "pinyin": "Tā qù dōngbiān le.", "en": "He went to the east side.", "vi": "Anh ấy đi về phía đông rồi." }
+    ]
+  },
+  {
+    "id": "21",
+    "hanzi": "跟",
+    "pinyin": "gēn",
+    "level": "HSK 3",
+    "mean_en": "with",
+    "mean_vi": "cùng với",
+    "pos_en": "Preposition",
+    "pos_vi": "Giới từ",
+    "sentences": [
+      { "hanzi": "我跟他去。", "pinyin": "Wǒ gēn tā qù.", "en": "I go with him.", "vi": "Tôi đi với anh ấy." },
+      { "hanzi": "你跟我来。", "pinyin": "Nǐ gēn wǒ lái.", "en": "You come with me.", "vi": "Bạn đi theo tôi." },
+      { "hanzi": "他跟朋友在饭店。", "pinyin": "Tā gēn péngyǒu zài fàndiàn.", "en": "He is at the restaurant with a friend.", "vi": "Anh ấy cùng bạn ở nhà hàng." }
+    ]
+  },
+  {
+    "id": "22",
+    "hanzi": "吧",
+    "pinyin": "ba",
+    "level": "HSK 2",
+    "mean_en": "suggestion particle",
+    "mean_vi": "đi / nhé",
+    "pos_en": "Particle",
+    "pos_vi": "Trợ từ",
+    "sentences": [
+      { "hanzi": "我们走吧。", "pinyin": "Wǒmen zǒu ba.", "en": "Let's go.", "vi": "Chúng ta đi thôi." },
+      { "hanzi": "吃饭吧。", "pinyin": "Chīfàn ba.", "en": "Let's eat.", "vi": "Ăn cơm nhé." },
+      { "hanzi": "你去吧。", "pinyin": "Nǐ qù ba.", "en": "You go ahead.", "vi": "Bạn đi đi." }
+    ]
+  },
+  {
+    "id": "23",
+    "hanzi": "太",
+    "pinyin": "tài",
+    "level": "HSK 1",
+    "mean_en": "too",
+    "mean_vi": "quá / lắm",
+    "pos_en": "Adverb",
+    "pos_vi": "Phó từ",
+    "sentences": [
+      { "hanzi": "太好了！", "pinyin": "Tài hǎo le!", "en": "Too good! / Great!", "vi": "Tốt quá rồi!" },
+      { "hanzi": "太大了。", "pinyin": "Tài dà le.", "en": "Too big.", "vi": "To quá." },
+      { "hanzi": "今天太热了。", "pinyin": "Jīntiān tài rè le.", "en": "Today is too hot.", "vi": "Hôm nay nóng quá." }
+    ]
+  },
+  {
+    "id": "24",
+    "hanzi": "了",
+    "pinyin": "le",
+    "level": "HSK 1",
+    "mean_en": "past/change particle",
+    "mean_vi": "rồi",
+    "pos_en": "Particle",
+    "pos_vi": "Trợ từ",
+    "sentences": [
+      { "hanzi": "我吃饭了。", "pinyin": "Wǒ chīfàn le.", "en": "I ate.", "vi": "Tôi ăn cơm rồi." },
+      { "hanzi": "下雨了。", "pinyin": "Xiàyǔ le.", "en": "It's raining.", "vi": "Trời mưa rồi." },
+      { "hanzi": "他去医院了。", "pinyin": "Tā qù yīyuàn le.", "en": "He went to the hospital.", "vi": "Anh ấy đi bệnh viện rồi." }
+    ]
+  }
+]

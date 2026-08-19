@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>likeabosch - Terminal</title>
+    
+    <!-- Favicon 🍻 vẽ bằng SVG siêu nhẹ -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%23282828%22/><text y=%22.9em%22 x=%2250%22 text-anchor=%22middle%22 font-size=%2270%22>🍻</text></svg>">
+    
+    <script src="https://cdn.jsdelivr.net/npm/hanzi-writer@3.5/dist/hanzi-writer.min.js"></script>
+
+    <style>
+        :root { --font-mono: "JetBrains Mono", "Fira Code", Consolas, monospace; }
+
+        [data-theme="dark"] {
+            --bg0: #282828; --bg1: #3c3836; --bg2: #504945;
+            --fg0: #fbf1c7; --fg1: #ebdbb2; --fg2: #d5c4a1;
+            --red: #cc241d; --green: #98971a; --yellow: #d79921; 
+            --blue: #458588; --purple: #b16286; --aqua: #689d6a;
+            --gray: #a89984; --border: #504945; --active-border: #98971a;
+        }
+
+        [data-theme="light"] {
+            --bg0: #fbf1c7; --bg1: #ebdbb2; --bg2: #d5c4a1;
+            --fg0: #282828; --fg1: #3c3836; --fg2: #504945;
+            --red: #9d0006; --green: #79740e; --yellow: #b57614; 
+            --blue: #076678; --purple: #8f3f71; --aqua: #427b58;
+            --gray: #7c6f64; --border: #d5c4a1; --active-border: #79740e;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; touch-action: manipulation; }
+
+        body {
+            font-family: var(--font-mono); background-color: var(--bg0); color: var(--fg1);
+            line-height: 1.5; display: flex; flex-direction: column; height: 100vh; overflow: hidden;
+        }
+
+        /* --- TMUX STATUS LINE --- */
+        .status-bar {
+            background-color: var(--bg1); display: flex; justify-content: space-between;
+            font-size: 0.85rem; border-bottom: 2px solid var(--green); z-index: 10;
+        }
+        .status-module { padding: 4px 12px; display: flex; align-items: center; gap: 8px; }
+        .module-mode { background-color: var(--green); color: var(--bg0); font-weight: bold; }
+        .module-btn { cursor: pointer; transition: background 0.1s; user-select: none; }
+        .module-btn:hover { background-color: var(--bg2); }
+        
+        /* --- WORKSPACE & PANES --- */
+        .workspace { flex: 1; padding: 4px; display: flex; flex-direction: column; gap: 4px; overflow-y: auto; padding-bottom: 70px; position: relative; }
+        .pane { border: 1px solid var(--border); background-color: var(--bg0); display: flex; flex-direction: column; }
+        .pane-header { background-color: var(--bg1); color: var(--fg2); font-size: 0.75rem; padding: 2px 8px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; }
+        .pane-content { padding: 16px; display: flex; flex-direction: column; align-items: center; height: 100%; }
+
+        /* --- PANES SPECIFICS --- */
+        .hanzi-display { font-size: 5rem; font-family: sans-serif; line-height: 1; color: var(--fg0); margin: 0; text-align: center; }
+        .hanzi-container { position: relative; width: 100%; display: flex; align-items: center; justify-content: center; margin: 10px 0; }
+        .btn-absolute-right { position: absolute; right: 0; border-color: var(--blue); color: var(--blue); }
+        
+        .meaning-block { display: none; text-align: center; width: 100%; border-top: 1px dashed var(--border); padding-top: 12px; margin-bottom: 12px; }
+        .pinyin { color: var(--yellow); font-size: 1.3rem; font-weight: bold; }
+        .pos-badge { color: var(--aqua); font-size: 0.85rem; margin-top: 4px; }
+        
+        .p-split { display: flex; flex-direction: row; gap: 4px; flex: 1; }
+        @media (max-width: 600px) { .p-split { flex-direction: column; } }
+        
+        .p-stroke { flex: 0 0 auto; align-items: center; justify-content: center; }
+        @media (min-width: 601px) { .p-stroke { width: 240px; } }
+        
+        /* Multi-character stroke container support */
+        .stroke-box-wrapper { display: flex; gap: 8px; align-items: center; justify-content: center; flex-wrap: wrap; flex: 1; width: 100%; }
+        .char-target-item { width: 100px; height: 100px; cursor: pointer; display: flex; justify-content: center; align-items: center; border: 1px dashed var(--border); }
+        @media (min-width: 601px) { .char-target-item { width: 90px; height: 90px; } }
+
+        .p-context { flex: 1; }
+        .sentences-container { width: 100%; flex: 1; }
+        .sentence-item { margin-bottom: 12px; padding-bottom: 12px; border-bottom: 1px dashed var(--bg2); width: 100%; }
+        .sent-header-row { display: flex; justify-content: space-between; align-items: flex-start; }
+        .sent-hanzi { font-size: 1.2rem; font-family: sans-serif; color: var(--fg0); flex: 1; user-select: text;}
+        .sent-details { display: none; border-left: 2px solid var(--gray); padding-left: 12px; margin-top: 8px; }
+        .sent-pinyin { color: var(--aqua); font-size: 0.9rem; margin-bottom: 2px; }
+        .sent-trans { color: var(--fg1); font-size: 0.95rem; }
+        .sentences-container.show-details .sent-details { display: block; }
+
+        /* --- BUTTONS --- */
+        .btn {
+            background: transparent; border: 1px solid var(--border); color: var(--fg1);
+            font-family: var(--font-mono); font-size: 0.85rem; padding: 10px 12px;
+            cursor: pointer; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px;
+            width: 100%; user-select: none; transition: background 0.1s;
+        }
+        .btn:hover, .btn:active { background: var(--bg2); }
+
+        .sys-btn { background: transparent; border: 1px solid var(--border); color: var(--fg1); font-family: var(--font-mono); cursor: pointer; padding: 2px 8px; font-size: 0.8rem; border-radius: 2px; }
+        .sys-btn:hover { background: var(--bg2); }
+        .btn-sent-audio { border: 1px solid var(--blue); color: var(--blue); padding: 2px 8px; margin-left: 8px; }
+        .kbd { color: var(--gray); font-size: 0.7rem; }
+
+        /* --- ANKI BOTTOM BAR --- */
+        .bottom-bar {
+            position: fixed; bottom: 0; left: 0; right: 0;
+            background: var(--bg0); border-top: 1px solid var(--border);
+            padding: 8px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px;
+            z-index: 100;
+        }
+
+        .btn-anki-1 { border-bottom: 3px solid var(--red); }
+        .btn-anki-2 { border-bottom: 3px solid var(--purple); }
+        .btn-anki-3 { border-bottom: 3px solid var(--green); }
+        .btn-anki-4 { border-bottom: 3px solid var(--blue); }
+
+        #loading { padding: 20px; color: var(--yellow); }
+        .error-msg { color: var(--red); }
+    </style>
+</head>
+<body data-theme="dark">
+
+<div class="status-bar" id="status-bar">
+    <div class="status-module module-mode" id="mode-indicator">-- NORMAL --</div>
+    <div style="display: flex;">
+        <div class="status-module module-btn" id="theme-toggle">[DARK]</div>
+        <div class="status-module module-btn" id="lang-toggle">[VI]</div>
+    </div>
+</div>
+
+<div id="loading">Loading database.json...</div>
+
+<div class="workspace" id="app-content" style="display: none;">
+    <!-- NORMAL VIEW -->
+    <div class="pane p-main" id="pane-main">
+        <div class="pane-header">
+            <span>~/likeabosch/main.c</span>
+            <span id="ui-level">level:-</span>
+        </div>
+        <div class="pane-content">
+            <div class="hanzi-container">
+                <div class="hanzi-display" id="main-hanzi">不</div>
+                <button class="sys-btn btn-absolute-right" id="btn-audio-main">🔊 [s]</button>
+            </div>
+            <div class="meaning-block" id="meaning-area">
+                <div class="pinyin" id="main-pinyin">bù</div>
+                <div id="main-meaning">không</div>
+                <div class="pos-badge" id="main-pos">[pos: Phó từ]</div>
+            </div>
+            <div style="margin-top: auto; font-size: 0.8rem; color: var(--gray);">[Space] Reveal / [h] Prev / [l] Next</div>
+        </div>
+    </div>
+
+    <div class="p-split">
+        <div class="pane p-stroke" id="pane-stroke">
+            <div class="pane-header"><span>~/likeabosch/stroke.c</span></div>
+            <div class="pane-content">
+                <!-- Hỗ trợ render nhiều ô cho từ nhiều chữ -->
+                <div class="stroke-box-wrapper" id="stroke-box-wrapper"></div>
+                <div style="margin-top: auto; font-size: 0.8rem; color: var(--gray);">[r] Replay (or click box)</div>
+            </div>
+        </div>
+        <div class="pane p-context" id="pane-context">
+            <div class="pane-header"><span>~/likeabosch/context.c</span></div>
+            <div class="pane-content" style="align-items: flex-start;">
+                <div class="sentences-container" id="sentences-container"></div>
+                <div style="margin-top: auto; font-size: 0.8rem; color: var(--gray);">[t] Translate</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ANKI STYLE BOTTOM BAR -->
+<div class="bottom-bar" id="bottom-bar" style="display: none;">
+    <button class="btn btn-anki-1" id="btn-again">
+        <span class="label">Lại</span> <span class="kbd">[1]</span>
+    </button>
+    <button class="btn btn-anki-2" id="btn-hard">
+        <span class="label">Khó</span> <span class="kbd">[2]</span>
+    </button>
+    <button class="btn btn-anki-3" id="btn-good">
+        <span class="label">Được</span> <span class="kbd">[3]</span>
+    </button>
+    <button class="btn btn-anki-4" id="btn-easy">
+        <span class="label">Dễ</span> <span class="kbd">[4]</span>
+    </button>
+</div>
+
+<script>
+    const dict = {
+        vi: { 
+            again: "Lại", hard: "Khó", good: "Được", easy: "Dễ", 
+            posPrefix: "pos: ", lvlPrefix: "level: " 
+        },
+        en: { 
+            again: "Again", hard: "Hard", good: "Good", easy: "Easy", 
+            posPrefix: "pos: ", lvlPrefix: "level: " 
+        }
+    };
+
+    let db = [];
+    let curIdx = 0;
+    let writers = []; // Mảng chứa các HanziWriter instance cho từng chữ
+    
+    // States
+    let sysLang = 'vi';
+    let sysTheme = 'dark';
+    let ansRevealed = false;
+    let transRevealed = false;
+
+    const el = {
+        app: document.getElementById('app-content'), load: document.getElementById('loading'),
+        bottomBar: document.getElementById('bottom-bar'),
+        
+        btnTheme: document.getElementById('theme-toggle'),
+        btnLang: document.getElementById('lang-toggle'),
+        
+        level: document.getElementById('ui-level'), hanzi: document.getElementById('main-hanzi'),
+        pinyin: document.getElementById('main-pinyin'), meaning: document.getElementById('main-meaning'),
+        pos: document.getElementById('main-pos'), meanArea: document.getElementById('meaning-area'),
+        strokeWrapper: document.getElementById('stroke-box-wrapper'), sentContainer: document.getElementById('sentences-container'),
+        
+        paneMain: document.getElementById('pane-main'), paneStroke: document.getElementById('pane-stroke'), paneContext: document.getElementById('pane-context'),
+        btnAudioMain: document.getElementById('btn-audio-main'),
+        
+        btnAgain: document.getElementById('btn-again'), btnHard: document.getElementById('btn-hard'),
+        btnGood: document.getElementById('btn-good'), btnEasy: document.getElementById('btn-easy')
+    };
+
+    // --- INIT ---
+    async function fetchDatabase() {
+        try {
+            const res = await fetch('./database.json');
+            
+            if(!res.ok) throw new Error("File not found");
+            db = await res.json();
+            
+            if(db.length === 0) throw new Error("Empty database");
+
+            el.load.style.display = 'none'; 
+            el.app.style.display = 'flex';
+            el.bottomBar.style.display = 'grid';
+            updateUILocale();
+            loadWord(0);
+        } catch(e) {
+            console.error(e);
+            el.load.innerHTML = `<span class="error-msg">[Error] Cannot load database.json</span><br><br>
+            Please ensure you have created the <b>database.json</b> file in your repository.<br>
+            If you are running this locally (file://), your browser is blocking local file access due to CORS security. <br>
+            Please host it on Github Pages or use a local web server (like VS Code Live Server).`;
+        }
+    }
+    fetchDatabase();
+
+    function updateUILocale() {
+        const d = dict[sysLang];
+        el.btnAgain.querySelector('.label').innerText = d.again;
+        el.btnHard.querySelector('.label').innerText = d.hard;
+        el.btnGood.querySelector('.label').innerText = d.good;
+        el.btnEasy.querySelector('.label').innerText = d.easy;
+    }
+
+    function updateWriterTheme() {
+        const style = getComputedStyle(document.body);
+        const strokeColor = style.getPropertyValue('--fg0').trim();
+        const radicalColor = style.getPropertyValue('--red').trim();
+        writers.forEach(w => {
+            if(w) {
+                w.updateColor('strokeColor', strokeColor);
+                w.updateColor('radicalColor', radicalColor);
+            }
+        });
+    }
+
+    // --- RENDER ---
+    function renderWord() {
+        const w = db[curIdx];
+        if(!w) return;
+        el.level.innerText = `${dict[sysLang].lvlPrefix}${w.level || '-'}`;
+        el.hanzi.innerText = w.hanzi;
+        el.pinyin.innerText = w.pinyin;
+        
+        el.meaning.innerText = sysLang === 'vi' ? (w.mean_vi || '') : (w.mean_en || '');
+        el.pos.innerText = `[pos: ${sysLang === 'vi' ? w.pos_vi : w.pos_en}]`;
+        
+        let html = '';
+        if(w.sentences) {
+            w.sentences.forEach(s => {
+                const trans = sysLang === 'vi' ? s.vi : s.en;
+                html += `
+                <div class="sentence-item">
+                    <div class="sent-header-row">
+                        <div class="sent-hanzi">${s.hanzi}</div>
+                        <button class="sys-btn btn-sent-audio" style="border-color: var(--aqua); color: var(--aqua);" data-text="${s.hanzi}">🔊</button>
+                    </div>
+                    <div class="sent-details">
+                        <div class="sent-pinyin">${s.pinyin}</div>
+                        <div class="sent-trans">${trans}</div>
+                    </div>
+                </div>`;
+            });
+        }
+        el.sentContainer.innerHTML = html;
+        el.sentContainer.className = transRevealed ? "sentences-container show-details" : "sentences-container";
+
+        document.querySelectorAll('.btn-sent-audio').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                speak(btn.getAttribute('data-text'));
+            });
+        });
+    }
+
+    function loadWord(idx) {
+        if(db.length === 0) return;
+        ansRevealed = false; transRevealed = false;
+        el.meanArea.style.display = 'none';
+        renderWord();
+        
+        // Xử lý tạo nhiều ô stroke cho từ nhiều chữ (VD: 教学楼)
+        el.strokeWrapper.innerHTML = '';
+        writers = [];
+        const hanziStr = db[idx].hanzi;
+        const style = getComputedStyle(document.body);
+        const strokeColor = style.getPropertyValue('--fg0').trim();
+        const radicalColor = style.getPropertyValue('--red').trim();
+
+        // Lọc lấy các ký tự là chữ Hán (bỏ qua ký hiệu lạ nếu có)
+        const chars = hanziStr.split('');
+        chars.forEach((char, i) => {
+            const boxId = `char-target-${i}`;
+            const boxDiv = document.createElement('div');
+            boxDiv.className = 'char-target-item';
+            boxDiv.id = boxId;
+            el.strokeWrapper.appendChild(boxDiv);
+
+            // Khởi tạo hanzi writer cho từng chữ
+            const writerInstance = HanziWriter.create(boxId, char, {
+                width: 85, height: 85, padding: 5, strokeAnimationSpeed: 1.2, delayBetweenStrokes: 50,
+                strokeColor: strokeColor, radicalColor: radicalColor
+            });
+            writers.push(writerInstance);
+
+            // Click vào ô chữ nào thì chạy lại animation chữ đó
+            boxDiv.addEventListener('click', () => {
+                writerInstance.animateCharacter();
+            });
+        });
+    }
+
+    // --- UTILS ---
+    function speak(text) {
+        let utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = 'zh-CN'; utterance.rate = 0.8;
+        window.speechSynthesis.speak(utterance);
+    }
+    
+    function processAnswer(difficulty) {
+        if(db.length === 0) return;
+        curIdx = (curIdx + 1) % db.length;
+        loadWord(curIdx);
+    }
+
+    function toggleAnswer() {
+        ansRevealed = !ansRevealed;
+        el.meanArea.style.display = ansRevealed ? 'block' : 'none';
+    }
+    
+    function toggleTrans() {
+        transRevealed = !transRevealed;
+        el.sentContainer.className = transRevealed ? "sentences-container show-details" : "sentences-container";
+    }
+
+    // Replay tất cả các chữ trong cụm từ khi bấm phím 'r' hoặc click vào pane stroke
+    function replayAllStrokes() {
+        writers.forEach(w => {
+            if(w) w.animateCharacter();
+        });
+    }
+
+    // --- LISTENERS ---
+    el.paneMain.addEventListener('click', toggleAnswer);
+    el.paneContext.addEventListener('click', toggleTrans);
+    el.paneStroke.addEventListener('click', replayAllStrokes); // Click vào toàn bộ pane stroke để chạy lại
+
+    el.btnAudioMain.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if(db.length > 0) speak(db[curIdx].hanzi);
+    });
+
+    // Anki Buttons Listeners
+    el.btnAgain.addEventListener('click', () => processAnswer('again'));
+    el.btnHard.addEventListener('click', () => processAnswer('hard'));
+    el.btnGood.addEventListener('click', () => processAnswer('good'));
+    el.btnEasy.addEventListener('click', () => processAnswer('easy'));
+
+    // Toggle Theme
+    el.btnTheme.addEventListener('click', () => {
+        sysTheme = sysTheme === 'dark' ? 'light' : 'dark';
+        document.body.setAttribute('data-theme', sysTheme);
+        el.btnTheme.innerText = `[${sysTheme.toUpperCase()}]`;
+        updateWriterTheme();
+    });
+
+    // Toggle Language
+    el.btnLang.addEventListener('click', () => {
+        sysLang = sysLang === 'vi' ? 'en' : 'vi';
+        el.btnLang.innerText = `[${sysLang.toUpperCase()}]`;
+        updateUILocale();
+        renderWord();
+    });
+
+    // --- KEYBOARD BINDINGS (VIM STYLE) ---
+    document.addEventListener('keydown', (e) => {
+        if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+
+        // NORMAL MODE
+        switch(e.key.toLowerCase()) {
+            case ' ': e.preventDefault(); toggleAnswer(); break;
+            case 't': toggleTrans(); break;
+            case 'h': if(db.length > 0) { curIdx = (curIdx - 1 + db.length) % db.length; loadWord(curIdx); } break;
+            case 'l': if(db.length > 0) { curIdx = (curIdx + 1) % db.length; loadWord(curIdx); } break;
+            case 'r': replayAllStrokes(); break;
+            case 's': if(db.length > 0) speak(db[curIdx].hanzi); break;
+            case '1': processAnswer('again'); break;
+            case '2': processAnswer('hard'); break;
+            case '3': processAnswer('good'); break;
+            case '4': processAnswer('easy'); break;
+        }
+    });
+
+    // --- MOBILE SWIPE GESTURES ---
+    let touchstartX = 0; let touchendX = 0; let touchstartY = 0; let touchendY = 0;
+    document.addEventListener('touchstart', e => {
+        touchstartX = e.changedTouches[0].screenX; touchstartY = e.changedTouches[0].screenY;
+    }, {passive: true});
+    document.addEventListener('touchend', e => {
+        touchendX = e.changedTouches[0].screenX; touchendY = e.changedTouches[0].screenY;
+        handleSwipe();
+    }, {passive: true});
+
+    function handleSwipe() {
+        const xDiff = touchendX - touchstartX; const yDiff = touchendY - touchstartY;
+        if (Math.abs(xDiff) > Math.abs(yDiff) && Math.abs(xDiff) > 60) {
+            if (xDiff < 0) processAnswer('again'); // Vuốt trái
+            else processAnswer('good');            // Vuốt phải
+        }
+    }
+
+</script>
+</body>
+</html>
