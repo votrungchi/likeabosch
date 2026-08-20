@@ -4,29 +4,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>likeabosch - Terminal</title>
-    
-    <!-- Favicon 🍻 vẽ bằng SVG siêu nhẹ -->
+
+    <!-- Favicon 🍻 drawn with a lightweight inline SVG -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%23282828%22/><text y=%22.9em%22 x=%2250%22 text-anchor=%22middle%22 font-size=%2270%22>🍻</text></svg>">
-    
+
     <script src="https://cdn.jsdelivr.net/npm/hanzi-writer@3.5/dist/hanzi-writer.min.js"></script>
 
     <style>
         :root { --font-mono: "JetBrains Mono", "Fira Code", Consolas, monospace; }
 
+        /* Catppuccin Mocha */
         [data-theme="dark"] {
-            --bg0: #282828; --bg1: #3c3836; --bg2: #504945;
-            --fg0: #fbf1c7; --fg1: #ebdbb2; --fg2: #d5c4a1;
-            --red: #cc241d; --green: #98971a; --yellow: #d79921; 
-            --blue: #458588; --purple: #b16286; --aqua: #689d6a;
-            --gray: #a89984; --border: #504945; --active-border: #98971a;
+            --bg0: #1e1e2e; --bg1: #313244; --bg2: #45475a;
+            --fg0: #cdd6f4; --fg1: #bac2de; --fg2: #a6adc8;
+            --red: #f38ba8; --green: #a6e3a1; --yellow: #f9e2af;
+            --blue: #89b4fa; --purple: #cba6f7; --aqua: #94e2d5;
+            --gray: #6c7086; --border: #45475a; --active-border: #a6e3a1;
+            /* Handwriter box (respects theme) */
+            --writer-bg: #313244; --writer-grid: rgba(243,139,168,0.22);
+            --writer-border: #585b70;
+            --writer-stroke: #89b4fa; --writer-radical: #f38ba8; --writer-outline: #585b70;
         }
 
+        /* Catppuccin Latte */
         [data-theme="light"] {
-            --bg0: #fbf1c7; --bg1: #ebdbb2; --bg2: #d5c4a1;
-            --fg0: #282828; --fg1: #3c3836; --fg2: #504945;
-            --red: #9d0006; --green: #79740e; --yellow: #b57614; 
-            --blue: #076678; --purple: #8f3f71; --aqua: #427b58;
-            --gray: #7c6f64; --border: #d5c4a1; --active-border: #79740e;
+            --bg0: #eff1f5; --bg1: #e6e9ef; --bg2: #ccd0da;
+            --fg0: #4c4f69; --fg1: #5c5f77; --fg2: #6c6f85;
+            --red: #d20f39; --green: #40a02b; --yellow: #df8e1d;
+            --blue: #1e66f5; --purple: #8839ef; --aqua: #179299;
+            --gray: #8c8fa1; --border: #bcc0cc; --active-border: #40a02b;
+            /* Handwriter box (respects theme) */
+            --writer-bg: #ffffff; --writer-grid: rgba(210,15,57,0.18);
+            --writer-border: #acb0be;
+            --writer-stroke: #1e66f5; --writer-radical: #d20f39; --writer-outline: #acb0be;
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; touch-action: manipulation; }
@@ -45,7 +55,7 @@
         .module-mode { background-color: var(--green); color: var(--bg0); font-weight: bold; }
         .module-btn { cursor: pointer; transition: background 0.1s; user-select: none; }
         .module-btn:hover { background-color: var(--bg2); }
-        
+
         /* --- WORKSPACE & PANES --- */
         .workspace { flex: 1; padding: 4px; display: flex; flex-direction: column; gap: 4px; overflow-y: auto; padding-bottom: 70px; position: relative; }
         .pane { border: 1px solid var(--border); background-color: var(--bg0); display: flex; flex-direction: column; }
@@ -55,21 +65,30 @@
         /* --- PANES SPECIFICS --- */
         .hanzi-display { font-size: 5rem; font-family: sans-serif; line-height: 1; color: var(--fg0); margin: 0; text-align: center; }
         .hanzi-container { position: relative; width: 100%; display: flex; align-items: center; justify-content: center; margin: 10px 0; }
-        .btn-absolute-right { position: absolute; right: 0; border-color: var(--blue); color: var(--blue); }
-        
+        .header-right { display: flex; align-items: center; gap: 10px; }
+        .btn-audio-header { border-color: var(--blue); color: var(--blue); padding: 0 6px; font-size: 0.75rem; line-height: 1.4; }
+
         .meaning-block { display: none; text-align: center; width: 100%; border-top: 1px dashed var(--border); padding-top: 12px; margin-bottom: 12px; }
         .pinyin { color: var(--yellow); font-size: 1.3rem; font-weight: bold; }
         .pos-badge { color: var(--aqua); font-size: 0.85rem; margin-top: 4px; }
-        
+
         .p-split { display: flex; flex-direction: row; gap: 4px; flex: 1; }
         @media (max-width: 600px) { .p-split { flex-direction: column; } }
-        
+
         .p-stroke { flex: 0 0 auto; align-items: center; justify-content: center; }
         @media (min-width: 601px) { .p-stroke { width: 240px; } }
-        
+
         /* Multi-character stroke container support */
         .stroke-box-wrapper { display: flex; gap: 8px; align-items: center; justify-content: center; flex-wrap: wrap; flex: 1; width: 100%; }
-        .char-target-item { width: 100px; height: 100px; cursor: pointer; display: flex; justify-content: center; align-items: center; border: 1px dashed var(--border); }
+        .char-target-item {
+            width: 100px; height: 100px; cursor: pointer;
+            display: flex; justify-content: center; align-items: center;
+            border: 1px solid var(--writer-border); border-radius: 4px;
+            background-color: var(--writer-bg);
+            background-image:
+                linear-gradient(to right, transparent calc(50% - 0.5px), var(--writer-grid) calc(50% - 0.5px), var(--writer-grid) calc(50% + 0.5px), transparent calc(50% + 0.5px)),
+                linear-gradient(to bottom, transparent calc(50% - 0.5px), var(--writer-grid) calc(50% - 0.5px), var(--writer-grid) calc(50% + 0.5px), transparent calc(50% + 0.5px));
+        }
         @media (min-width: 601px) { .char-target-item { width: 90px; height: 90px; } }
 
         .p-context { flex: 1; }
@@ -108,6 +127,7 @@
         .btn-anki-2 { border-bottom: 3px solid var(--purple); }
         .btn-anki-3 { border-bottom: 3px solid var(--green); }
         .btn-anki-4 { border-bottom: 3px solid var(--blue); }
+        .btn .interval { color: var(--yellow); font-size: 0.7rem; font-weight: bold; }
 
         #loading { padding: 20px; color: var(--yellow); }
         .error-msg { color: var(--red); }
@@ -130,12 +150,14 @@
     <div class="pane p-main" id="pane-main">
         <div class="pane-header">
             <span>~/likeabosch/main.c</span>
-            <span id="ui-level">level:-</span>
+            <span class="header-right">
+                <span id="ui-level">level:-</span>
+                <button class="sys-btn btn-audio-header" id="btn-audio-main">🔊 [s]</button>
+            </span>
         </div>
         <div class="pane-content">
             <div class="hanzi-container">
                 <div class="hanzi-display" id="main-hanzi">不</div>
-                <button class="sys-btn btn-absolute-right" id="btn-audio-main">🔊 [s]</button>
             </div>
             <div class="meaning-block" id="meaning-area">
                 <div class="pinyin" id="main-pinyin">bù</div>
@@ -150,7 +172,7 @@
         <div class="pane p-stroke" id="pane-stroke">
             <div class="pane-header"><span>~/likeabosch/stroke.c</span></div>
             <div class="pane-content">
-                <!-- Hỗ trợ render nhiều ô cho từ nhiều chữ -->
+                <!-- Supports rendering multiple boxes for multi-character words -->
                 <div class="stroke-box-wrapper" id="stroke-box-wrapper"></div>
                 <div style="margin-top: auto; font-size: 0.8rem; color: var(--gray);">[r] Replay (or click box)</div>
             </div>
@@ -168,35 +190,39 @@
 <!-- ANKI STYLE BOTTOM BAR -->
 <div class="bottom-bar" id="bottom-bar" style="display: none;">
     <button class="btn btn-anki-1" id="btn-again">
+        <span class="interval" id="int-again"></span>
         <span class="label">Lại</span> <span class="kbd">[1]</span>
     </button>
     <button class="btn btn-anki-2" id="btn-hard">
+        <span class="interval" id="int-hard"></span>
         <span class="label">Khó</span> <span class="kbd">[2]</span>
     </button>
     <button class="btn btn-anki-3" id="btn-good">
+        <span class="interval" id="int-good"></span>
         <span class="label">Được</span> <span class="kbd">[3]</span>
     </button>
     <button class="btn btn-anki-4" id="btn-easy">
+        <span class="interval" id="int-easy"></span>
         <span class="label">Dễ</span> <span class="kbd">[4]</span>
     </button>
 </div>
 
 <script>
     const dict = {
-        vi: { 
-            again: "Lại", hard: "Khó", good: "Được", easy: "Dễ", 
-            posPrefix: "pos: ", lvlPrefix: "level: " 
+        vi: {
+            again: "Lại", hard: "Khó", good: "Được", easy: "Dễ",
+            posPrefix: "pos: ", lvlPrefix: "level: "
         },
-        en: { 
-            again: "Again", hard: "Hard", good: "Good", easy: "Easy", 
-            posPrefix: "pos: ", lvlPrefix: "level: " 
+        en: {
+            again: "Again", hard: "Hard", good: "Good", easy: "Easy",
+            posPrefix: "pos: ", lvlPrefix: "level: "
         }
     };
 
     let db = [];
     let curIdx = 0;
-    let writers = []; // Mảng chứa các HanziWriter instance cho từng chữ
-    
+    let writers = []; // Array holding one HanziWriter instance per character
+
     // States
     let sysLang = 'vi';
     let sysTheme = 'dark';
@@ -206,37 +232,43 @@
     const el = {
         app: document.getElementById('app-content'), load: document.getElementById('loading'),
         bottomBar: document.getElementById('bottom-bar'),
-        
+
         btnTheme: document.getElementById('theme-toggle'),
         btnLang: document.getElementById('lang-toggle'),
-        
+
         level: document.getElementById('ui-level'), hanzi: document.getElementById('main-hanzi'),
         pinyin: document.getElementById('main-pinyin'), meaning: document.getElementById('main-meaning'),
         pos: document.getElementById('main-pos'), meanArea: document.getElementById('meaning-area'),
         strokeWrapper: document.getElementById('stroke-box-wrapper'), sentContainer: document.getElementById('sentences-container'),
-        
+
         paneMain: document.getElementById('pane-main'), paneStroke: document.getElementById('pane-stroke'), paneContext: document.getElementById('pane-context'),
         btnAudioMain: document.getElementById('btn-audio-main'),
-        
+
         btnAgain: document.getElementById('btn-again'), btnHard: document.getElementById('btn-hard'),
-        btnGood: document.getElementById('btn-good'), btnEasy: document.getElementById('btn-easy')
+        btnGood: document.getElementById('btn-good'), btnEasy: document.getElementById('btn-easy'),
+
+        intAgain: document.getElementById('int-again'), intHard: document.getElementById('int-hard'),
+        intGood: document.getElementById('int-good'), intEasy: document.getElementById('int-easy')
     };
 
     // --- INIT ---
     async function fetchDatabase() {
         try {
             const res = await fetch('./database.json');
-            
+
             if(!res.ok) throw new Error("File not found");
             db = await res.json();
-            
+
             if(db.length === 0) throw new Error("Empty database");
 
-            el.load.style.display = 'none'; 
+            el.load.style.display = 'none';
             el.app.style.display = 'flex';
             el.bottomBar.style.display = 'grid';
+            loadState();
             updateUILocale();
-            loadWord(0);
+            let start = pickDueIndex(-1);
+            if(start === -1) start = 0;
+            loadWord(start);
         } catch(e) {
             console.error(e);
             el.load.innerHTML = `<span class="error-msg">[Error] Cannot load database.json</span><br><br>
@@ -255,14 +287,24 @@
         el.btnEasy.querySelector('.label').innerText = d.easy;
     }
 
+    // Character-box colors follow the active theme (dark/light).
+    function getWriterColors() {
+        const s = getComputedStyle(document.body);
+        return {
+            stroke: s.getPropertyValue('--writer-stroke').trim(),
+            radical: s.getPropertyValue('--writer-radical').trim(),
+            outline: s.getPropertyValue('--writer-outline').trim()
+        };
+    }
+
     function updateWriterTheme() {
-        const style = getComputedStyle(document.body);
-        const strokeColor = style.getPropertyValue('--fg0').trim();
-        const radicalColor = style.getPropertyValue('--red').trim();
+        const c = getWriterColors();
         writers.forEach(w => {
             if(w) {
-                w.updateColor('strokeColor', strokeColor);
-                w.updateColor('radicalColor', radicalColor);
+                w.updateColor('strokeColor', c.stroke);
+                w.updateColor('radicalColor', c.radical);
+                w.updateColor('outlineColor', c.outline);
+                w.updateColor('drawingColor', c.radical);
             }
         });
     }
@@ -274,10 +316,10 @@
         el.level.innerText = `${dict[sysLang].lvlPrefix}${w.level || '-'}`;
         el.hanzi.innerText = w.hanzi;
         el.pinyin.innerText = w.pinyin;
-        
+
         el.meaning.innerText = sysLang === 'vi' ? (w.mean_vi || '') : (w.mean_en || '');
         el.pos.innerText = `[pos: ${sysLang === 'vi' ? w.pos_vi : w.pos_en}]`;
-        
+
         let html = '';
         if(w.sentences) {
             w.sentences.forEach(s => {
@@ -308,20 +350,19 @@
 
     function loadWord(idx) {
         if(db.length === 0) return;
+        curIdx = idx;
         ansRevealed = false; transRevealed = false;
         el.meanArea.style.display = 'none';
         renderWord();
-        
-        // Xử lý tạo nhiều ô stroke cho từ nhiều chữ (VD: 教学楼)
+
+        // Create one stroke box per character for multi-character words (e.g. 教学楼)
         el.strokeWrapper.innerHTML = '';
         writers = [];
         const hanziStr = db[idx].hanzi;
-        const style = getComputedStyle(document.body);
-        const strokeColor = style.getPropertyValue('--fg0').trim();
-        const radicalColor = style.getPropertyValue('--red').trim();
 
-        // Lọc lấy các ký tự là chữ Hán (bỏ qua ký hiệu lạ nếu có)
+        // Split into individual Han characters (ignore any stray symbols)
         const chars = hanziStr.split('');
+        const wc = getWriterColors();
         chars.forEach((char, i) => {
             const boxId = `char-target-${i}`;
             const boxDiv = document.createElement('div');
@@ -329,30 +370,200 @@
             boxDiv.id = boxId;
             el.strokeWrapper.appendChild(boxDiv);
 
-            // Khởi tạo hanzi writer cho từng chữ
+            // Initialize a hanzi writer for each character
             const writerInstance = HanziWriter.create(boxId, char, {
                 width: 85, height: 85, padding: 5, strokeAnimationSpeed: 1.2, delayBetweenStrokes: 50,
-                strokeColor: strokeColor, radicalColor: radicalColor
+                showOutline: true, strokeColor: wc.stroke, radicalColor: wc.radical,
+                outlineColor: wc.outline, drawingColor: wc.radical
             });
             writers.push(writerInstance);
 
-            // Click vào ô chữ nào thì chạy lại animation chữ đó
+            // Clicking a character box replays that character's animation
             boxDiv.addEventListener('click', () => {
                 writerInstance.animateCharacter();
             });
         });
+
+        updateButtonHints();
     }
 
-    // --- UTILS ---
+// --- UTILS: TEXT-TO-SPEECH (iOS Safari safe) ---
+    const hasSpeech = 'speechSynthesis' in window;
+    let zhVoice = null;
+    let speechUnlocked = false;
+
+    function pickVoice() {
+        if(!hasSpeech) return;
+        const voices = window.speechSynthesis.getVoices() || [];
+        zhVoice = voices.find(v => v.lang && v.lang.toLowerCase() === 'zh-cn')
+               || voices.find(v => v.lang && v.lang.toLowerCase().startsWith('zh'))
+               || null;
+    }
+
+    if(hasSpeech) {
+        pickVoice();
+        // iOS/Chrome load voices asynchronously
+        window.speechSynthesis.onvoiceschanged = pickVoice;
+    }
+
+    // iOS requires the first utterance to be triggered inside a user gesture.
+    // We "warm up" the synthesizer on the very first tap so later calls work.
+    function unlockSpeech() {
+        if(speechUnlocked || !hasSpeech) return;
+        try {
+            const warm = new SpeechSynthesisUtterance('');
+            warm.volume = 0;
+            window.speechSynthesis.speak(warm);
+            speechUnlocked = true;
+            pickVoice();
+        } catch(e) { /* ignore */ }
+    }
+    document.addEventListener('touchend', unlockSpeech, { once: true, passive: true });
+    document.addEventListener('click', unlockSpeech, { once: true });
+
     function speak(text) {
-        let utterance = new SpeechSynthesisUtterance(text);
-        utterance.lang = 'zh-CN'; utterance.rate = 0.8;
+        if(!hasSpeech || !text) return;
+        // Must run synchronously within a user gesture on iOS.
+        window.speechSynthesis.cancel();
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = 'zh-CN';
+        utterance.rate = 0.8;
+        if(zhVoice) utterance.voice = zhVoice;
         window.speechSynthesis.speak(utterance);
     }
-    
-    function processAnswer(difficulty) {
+
+    // --- SPACED REPETITION (Anki SM-2 style) ---
+    const SRS_KEY = 'likeabosch_srs_v1';
+    const MIN = 60 * 1000, HOUR = 60 * MIN, DAY = 24 * HOUR;
+    const LEARN_STEPS = [1, 10];   // minutes for learning steps
+    const GRAD_INTERVAL = 1;       // days when graduating with "Good"
+    const EASY_INTERVAL = 4;       // days when graduating with "Easy"
+    const MIN_EASE = 1.3, EASY_BONUS = 1.3, HARD_MULT = 1.2;
+    let cards = {};                // id -> scheduling state
+
+    function loadState() {
+        try { cards = JSON.parse(localStorage.getItem(SRS_KEY)) || {}; }
+        catch(e) { cards = {}; }
+    }
+    function saveState() {
+        try { localStorage.setItem(SRS_KEY, JSON.stringify(cards)); } catch(e) {}
+    }
+    function getCard(id) {
+        if(!cards[id]) {
+            cards[id] = { id, state: 'new', step: 0, ease: 2.5, interval: 0, reps: 0, lapses: 0, due: 0 };
+        }
+        return cards[id];
+    }
+
+    function graduate(c, now, days) {
+        c.state = 'review';
+        c.interval = days;
+        c.reps += 1;
+        c.step = 0;
+        c.due = now + days * DAY;
+    }
+
+    function applyLearning(c, rating, now) {
+        if(c.state === 'new') c.state = 'learning';
+        switch(rating) {
+            case 'again':
+                c.step = 0;
+                c.due = now + LEARN_STEPS[0] * MIN;
+                break;
+            case 'hard':
+                c.due = now + LEARN_STEPS[Math.min(c.step, LEARN_STEPS.length - 1)] * MIN;
+                break;
+            case 'good':
+                c.step += 1;
+                if(c.step >= LEARN_STEPS.length) graduate(c, now, GRAD_INTERVAL);
+                else c.due = now + LEARN_STEPS[c.step] * MIN;
+                break;
+            case 'easy':
+                graduate(c, now, EASY_INTERVAL);
+                break;
+        }
+    }
+
+    function applyReview(c, rating, now) {
+        switch(rating) {
+            case 'again':
+                c.lapses += 1;
+                c.ease = Math.max(MIN_EASE, c.ease - 0.20);
+                c.state = 'learning';
+                c.step = 0;
+                c.interval = 0;
+                c.due = now + LEARN_STEPS[0] * MIN;
+                break;
+            case 'hard':
+                c.ease = Math.max(MIN_EASE, c.ease - 0.15);
+                c.interval = Math.max(c.interval + 1, Math.round(c.interval * HARD_MULT));
+                c.reps += 1;
+                c.due = now + c.interval * DAY;
+                break;
+            case 'good':
+                c.interval = Math.max(c.interval + 1, Math.round(c.interval * c.ease));
+                c.reps += 1;
+                c.due = now + c.interval * DAY;
+                break;
+            case 'easy':
+                c.ease += 0.15;
+                c.interval = Math.max(c.interval + 1, Math.round(c.interval * c.ease * EASY_BONUS));
+                c.reps += 1;
+                c.due = now + c.interval * DAY;
+                break;
+        }
+    }
+
+    function applyRating(c, rating, now) {
+        if(c.state === 'new' || c.state === 'learning') applyLearning(c, rating, now);
+        else applyReview(c, rating, now);
+    }
+
+    // Compute the resulting delay for a rating without mutating the real card.
+    function previewDelta(c, rating) {
+        const copy = JSON.parse(JSON.stringify(c));
+        const now = Date.now();
+        applyRating(copy, rating, now);
+        return copy.due - now;
+    }
+
+    function formatInterval(ms) {
+        if(ms < MIN) return '<1m';
+        if(ms < HOUR) return Math.round(ms / MIN) + 'm';
+        if(ms < DAY) return Math.round(ms / HOUR) + 'h';
+        if(ms < 30 * DAY) return Math.round(ms / DAY) + 'd';
+        if(ms < 365 * DAY) return Math.round(ms / (30 * DAY)) + 'mo';
+        return (ms / (365 * DAY)).toFixed(1) + 'y';
+    }
+
+    function updateButtonHints() {
         if(db.length === 0) return;
-        curIdx = (curIdx + 1) % db.length;
+        const c = getCard(db[curIdx].id);
+        el.intAgain.innerText = formatInterval(previewDelta(c, 'again'));
+        el.intHard.innerText  = formatInterval(previewDelta(c, 'hard'));
+        el.intGood.innerText  = formatInterval(previewDelta(c, 'good'));
+        el.intEasy.innerText  = formatInterval(previewDelta(c, 'easy'));
+    }
+
+    // Pick the card whose due time is earliest (Anki-style queue).
+    function pickDueIndex(excludeIdx) {
+        let bestIdx = -1, bestDue = Infinity;
+        for(let i = 0; i < db.length; i++) {
+            if(i === excludeIdx) continue;
+            const due = getCard(db[i].id).due || 0;
+            if(due < bestDue) { bestDue = due; bestIdx = i; }
+        }
+        return bestIdx;
+    }
+
+    function processAnswer(rating) {
+        if(db.length === 0) return;
+        const c = getCard(db[curIdx].id);
+        applyRating(c, rating, Date.now());
+        saveState();
+        let next = pickDueIndex(curIdx);
+        if(next === -1) next = curIdx;
+        curIdx = next;
         loadWord(curIdx);
     }
 
@@ -360,13 +571,13 @@
         ansRevealed = !ansRevealed;
         el.meanArea.style.display = ansRevealed ? 'block' : 'none';
     }
-    
+
     function toggleTrans() {
         transRevealed = !transRevealed;
         el.sentContainer.className = transRevealed ? "sentences-container show-details" : "sentences-container";
     }
 
-    // Replay tất cả các chữ trong cụm từ khi bấm phím 'r' hoặc click vào pane stroke
+    // Replay all characters in the word when pressing 'r' or clicking the stroke pane
     function replayAllStrokes() {
         writers.forEach(w => {
             if(w) w.animateCharacter();
@@ -376,7 +587,7 @@
     // --- LISTENERS ---
     el.paneMain.addEventListener('click', toggleAnswer);
     el.paneContext.addEventListener('click', toggleTrans);
-    el.paneStroke.addEventListener('click', replayAllStrokes); // Click vào toàn bộ pane stroke để chạy lại
+    el.paneStroke.addEventListener('click', replayAllStrokes); // Click anywhere in the stroke pane to replay
 
     el.btnAudioMain.addEventListener('click', (e) => {
         e.stopPropagation();
@@ -437,8 +648,8 @@
     function handleSwipe() {
         const xDiff = touchendX - touchstartX; const yDiff = touchendY - touchstartY;
         if (Math.abs(xDiff) > Math.abs(yDiff) && Math.abs(xDiff) > 60) {
-            if (xDiff < 0) processAnswer('again'); // Vuốt trái
-            else processAnswer('good');            // Vuốt phải
+            if (xDiff < 0) processAnswer('again'); // Swipe left
+            else processAnswer('good');            // Swipe right
         }
     }
 
