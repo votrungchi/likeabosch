@@ -395,8 +395,29 @@
     function pickVoice() {
         if(!hasSpeech) return;
         const voices = window.speechSynthesis.getVoices() || [];
-        zhVoice = voices.find(v => v.lang && v.lang.toLowerCase() === 'zh-cn')
-               || voices.find(v => v.lang && v.lang.toLowerCase().startsWith('zh'))
+        const zh = voices.filter(v => v.lang && v.lang.toLowerCase().startsWith('zh'));
+        if(zh.length === 0) { zhVoice = null; return; }
+
+        // Prefer Mandarin (zh-CN) over other Chinese variants.
+        const mandarin = zh.filter(v => v.lang.toLowerCase() === 'zh-cn');
+        const pool = mandarin.length ? mandarin : zh;
+
+        // Known high-quality female Mandarin voices across platforms
+        // (iOS/macOS: Tingting; Google: Chinese female; MS: Xiaoxiao/Xiaoyi/Huihui/Yaoyao).
+        const FEMALE = [
+            'xiaoxiao', 'xiaoyi', 'huihui', 'yaoyao', 'tingting', 'ting-ting',
+            'sinji', 'meijia', 'google 普通话', 'female', '女'
+        ];
+        const MALE = ['kangkang', 'yunyang', 'yunxi', 'liang', 'male', '男'];
+
+        const byName = (list) => pool.find(v => {
+            const n = (v.name || '').toLowerCase();
+            return list.some(k => n.includes(k));
+        });
+
+        zhVoice = byName(FEMALE)                              // best: named female voice
+               || pool.find(v => !MALE.some(k => (v.name || '').toLowerCase().includes(k))) // avoid known male
+               || pool[0]                                     // any Mandarin
                || null;
     }
 
