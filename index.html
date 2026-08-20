@@ -56,6 +56,22 @@
         .module-btn { cursor: pointer; transition: background 0.1s; user-select: none; }
         .module-btn:hover { background-color: var(--bg2); }
 
+        /* --- SEARCH --- */
+        .search-bar { display: flex; align-items: center; gap: 8px; background-color: var(--bg1); border-bottom: 1px solid var(--border); padding: 6px 12px; }
+        .search-prompt { color: var(--green); font-weight: bold; }
+        .search-input { flex: 1; background: transparent; border: none; outline: none; color: var(--fg0); font-family: var(--font-mono); font-size: 1rem; }
+        .search-input::placeholder { color: var(--gray); }
+        .search-count { color: var(--gray); font-size: 0.75rem; }
+        .search-close { cursor: pointer; color: var(--gray); font-size: 0.75rem; padding: 2px 6px; border: 1px solid var(--border); border-radius: 2px; }
+        .search-close:hover { background-color: var(--bg2); }
+        .search-results { background-color: var(--bg0); border-bottom: 1px solid var(--border); max-height: 45vh; overflow-y: auto; z-index: 20; }
+        .result-item { padding: 8px 12px; border-bottom: 1px solid var(--border); cursor: pointer; display: flex; gap: 10px; align-items: baseline; }
+        .result-item:hover, .result-item.active { background-color: var(--bg2); }
+        .result-hanzi { font-family: sans-serif; font-size: 1.15rem; color: var(--fg0); }
+        .result-pinyin { color: var(--yellow); font-size: 0.85rem; }
+        .result-mean { color: var(--fg2); font-size: 0.8rem; margin-left: auto; text-align: right; }
+        .result-empty { padding: 10px 12px; color: var(--gray); font-size: 0.85rem; }
+
         /* --- WORKSPACE & PANES --- */
         .workspace { flex: 1; padding: 4px; display: flex; flex-direction: column; gap: 4px; overflow-y: auto; padding-bottom: 70px; position: relative; }
         .pane { border: 1px solid var(--border); background-color: var(--bg0); display: flex; flex-direction: column; }
@@ -138,10 +154,21 @@
 <div class="status-bar" id="status-bar">
     <div class="status-module module-mode" id="mode-indicator">-- NORMAL --</div>
     <div style="display: flex;">
+        <div class="status-module module-btn" id="search-toggle">[/]</div>
         <div class="status-module module-btn" id="theme-toggle">[DARK]</div>
         <div class="status-module module-btn" id="lang-toggle">[VI]</div>
     </div>
 </div>
+
+<!-- SEARCH BAR (toggle with '/' or the [/] button) -->
+<div class="search-bar" id="search-bar" style="display: none;">
+    <span class="search-prompt">/</span>
+    <input id="search-input" class="search-input" type="text" placeholder="search pinyin or hanzi..."
+           autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+    <span class="search-count" id="search-count"></span>
+    <span class="search-close module-btn" id="search-close">[esc]</span>
+</div>
+<div class="search-results" id="search-results" style="display: none;"></div>
 
 <div id="loading">Loading database.json...</div>
 
@@ -248,7 +275,11 @@
         btnGood: document.getElementById('btn-good'), btnEasy: document.getElementById('btn-easy'),
 
         intAgain: document.getElementById('int-again'), intHard: document.getElementById('int-hard'),
-        intGood: document.getElementById('int-good'), intEasy: document.getElementById('int-easy')
+        intGood: document.getElementById('int-good'), intEasy: document.getElementById('int-easy'),
+
+        searchToggle: document.getElementById('search-toggle'), searchBar: document.getElementById('search-bar'),
+        searchInput: document.getElementById('search-input'), searchCount: document.getElementById('search-count'),
+        searchClose: document.getElementById('search-close'), searchResults: document.getElementById('search-results')
     };
 
     // --- INIT ---
@@ -605,6 +636,83 @@
         });
     }
 
+    // --- SEARCH (by hanzi, pinyin, or meaning) ---
+    let searchMatches = [];
+    let searchActive = 0;
+
+    function escapeHtml(s) {
+        return (s || '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+    }
+
+    // Lowercase and strip tone marks/spaces so "jiaoxue" matches "jiào xué".
+    function normPinyin(str) {
+        return (str || '')
+            .toLowerCase()
+            .normalize('NFD')
+            .replace(/[\u0300-\u036f]/g, '')
+            .replace(/ü/g, 'u')
+            .replace(/[^a-z0-9]/g, '');
+    }
+
+    function runSearch(q) {
+        const raw = (q || '').trim();
+        if(!raw) return [];
+        const nq = normPinyin(raw);
+        const lower = raw.toLowerCase();
+        const res = [];
+        db.forEach((w, i) => {
+            const hitHanzi = (w.hanzi || '').includes(raw);
+            const hitPin = nq.length > 0 && normPinyin(w.pinyin).includes(nq);
+            const hitMean = lower.length > 0 &&
+                ((w.mean_vi || '').toLowerCase().includes(lower) || (w.mean_en || '').toLowerCase().includes(lower));
+            if(hitHanzi || hitPin || hitMean) res.push(i);
+        });
+        return res;
+    }
+
+    function renderResults(matches) {
+        if(matches.length === 0) {
+            el.searchResults.innerHTML = '<div class="result-empty">No matches</div>';
+        } else {
+            el.searchResults.innerHTML = matches.map((idx, k) => {
+                const w = db[idx];
+                const mean = sysLang === 'vi' ? (w.mean_vi || '') : (w.mean_en || '');
+                return `<div class="result-item${k === searchActive ? ' active' : ''}" data-idx="${idx}">
+                    <span class="result-hanzi">${escapeHtml(w.hanzi)}</span>
+                    <span class="result-pinyin">${escapeHtml(w.pinyin)}</span>
+                    <span class="result-mean">${escapeHtml(mean)}</span>
+                </div>`;
+            }).join('');
+            el.searchResults.querySelectorAll('.result-item').forEach(item => {
+                item.addEventListener('click', () => selectResult(parseInt(item.getAttribute('data-idx'), 10)));
+            });
+        }
+        el.searchCount.innerText = matches.length ? String(matches.length) : '';
+        el.searchResults.style.display = 'block';
+    }
+
+    function selectResult(idx) {
+        loadWord(idx);
+        closeSearch();
+    }
+
+    function openSearch() {
+        el.searchBar.style.display = 'flex';
+        el.searchInput.value = '';
+        searchMatches = [];
+        searchActive = 0;
+        el.searchResults.innerHTML = '';
+        el.searchResults.style.display = 'none';
+        el.searchCount.innerText = '';
+        el.searchInput.focus();
+    }
+
+    function closeSearch() {
+        el.searchBar.style.display = 'none';
+        el.searchResults.style.display = 'none';
+        el.searchInput.blur();
+    }
+
     // --- LISTENERS ---
     el.paneMain.addEventListener('click', toggleAnswer);
     el.paneContext.addEventListener('click', toggleTrans);
@@ -620,6 +728,28 @@
     el.btnHard.addEventListener('click', () => processAnswer('hard'));
     el.btnGood.addEventListener('click', () => processAnswer('good'));
     el.btnEasy.addEventListener('click', () => processAnswer('easy'));
+
+    // Search Listeners
+    el.searchToggle.addEventListener('click', openSearch);
+    el.searchClose.addEventListener('click', closeSearch);
+    el.searchInput.addEventListener('input', () => {
+        searchMatches = runSearch(el.searchInput.value);
+        searchActive = 0;
+        renderResults(searchMatches);
+    });
+    el.searchInput.addEventListener('keydown', (e) => {
+        if(e.key === 'Escape') {
+            closeSearch();
+        } else if(e.key === 'Enter') {
+            if(searchMatches.length) selectResult(searchMatches[searchActive]);
+        } else if(e.key === 'ArrowDown') {
+            e.preventDefault();
+            if(searchMatches.length) { searchActive = (searchActive + 1) % searchMatches.length; renderResults(searchMatches); }
+        } else if(e.key === 'ArrowUp') {
+            e.preventDefault();
+            if(searchMatches.length) { searchActive = (searchActive - 1 + searchMatches.length) % searchMatches.length; renderResults(searchMatches); }
+        }
+    });
 
     // Toggle Theme
     el.btnTheme.addEventListener('click', () => {
@@ -644,6 +774,7 @@
         // NORMAL MODE
         switch(e.key.toLowerCase()) {
             case ' ': e.preventDefault(); toggleAnswer(); break;
+            case '/': e.preventDefault(); openSearch(); break;
             case 't': toggleTrans(); break;
             case 'h': if(db.length > 0) { curIdx = (curIdx - 1 + db.length) % db.length; loadWord(curIdx); } break;
             case 'l': if(db.length > 0) { curIdx = (curIdx + 1) % db.length; loadWord(curIdx); } break;
