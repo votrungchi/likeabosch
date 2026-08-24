@@ -64,6 +64,11 @@
         .search-count { color: var(--gray); font-size: 0.75rem; }
         .search-close { cursor: pointer; color: var(--gray); font-size: 0.75rem; padding: 2px 6px; border: 1px solid var(--border); border-radius: 2px; }
         .search-close:hover { background-color: var(--bg2); }
+
+        /* --- STATUS BAR FILTERS --- */
+        .filter-select { background-color: var(--bg2); border: 1px solid var(--border); color: var(--fg0); font-family: var(--font-mono); font-size: 0.7rem; padding: 1px 4px; margin-right: 6px; cursor: pointer; border-radius: 2px; }
+        .filter-select:hover { border-color: var(--active-border); }
+        .filter-select option { background-color: var(--bg0); color: var(--fg0); }
         .search-results { background-color: var(--bg0); border-bottom: 1px solid var(--border); max-height: 45vh; overflow-y: auto; z-index: 20; }
         .result-item { padding: 8px 12px; border-bottom: 1px solid var(--border); cursor: pointer; display: flex; gap: 10px; align-items: baseline; }
         .result-item:hover, .result-item.active { background-color: var(--bg2); }
@@ -153,7 +158,30 @@
 
 <div class="status-bar" id="status-bar">
     <div class="status-module module-mode" id="mode-indicator">-- NORMAL --</div>
-    <div style="display: flex;">
+    <div style="display: flex; align-items: center;">
+        <select id="level-filter" class="filter-select">
+            <option value="">All Levels</option>
+            <option value="HSK 1">HSK 1</option>
+            <option value="HSK 2">HSK 2</option>
+        </select>
+        <select id="lesson-filter" class="filter-select">
+            <option value="">All Lessons</option>
+            <option value="1">Lesson 1</option>
+            <option value="2">Lesson 2</option>
+            <option value="3">Lesson 3</option>
+            <option value="4">Lesson 4</option>
+            <option value="5">Lesson 5</option>
+            <option value="6">Lesson 6</option>
+            <option value="7">Lesson 7</option>
+            <option value="8">Lesson 8</option>
+            <option value="9">Lesson 9</option>
+            <option value="10">Lesson 10</option>
+            <option value="11">Lesson 11</option>
+            <option value="12">Lesson 12</option>
+            <option value="13">Lesson 13</option>
+            <option value="14">Lesson 14</option>
+            <option value="15">Lesson 15</option>
+        </select>
         <div class="status-module module-btn" id="search-toggle">[/]</div>
         <div class="status-module module-btn" id="theme-toggle">[DARK]</div>
         <div class="status-module module-btn" id="lang-toggle">[VI]</div>
@@ -171,6 +199,7 @@
 <div class="search-results" id="search-results" style="display: none;"></div>
 
 <div id="loading">Loading database.json...</div>
+<div id="no-matches" style="display: none; padding: 20px; color: var(--yellow);">No words match the selected filters.</div>
 
 <div class="workspace" id="app-content" style="display: none;">
     <!-- NORMAL VIEW -->
@@ -255,9 +284,12 @@
     let sysTheme = 'dark';
     let ansRevealed = false;
     let transRevealed = false;
+    let filterLevel = '';
+    let filterLesson = '';
 
     const el = {
         app: document.getElementById('app-content'), load: document.getElementById('loading'),
+        noMatch: document.getElementById('no-matches'),
         bottomBar: document.getElementById('bottom-bar'),
 
         btnTheme: document.getElementById('theme-toggle'),
@@ -279,7 +311,9 @@
 
         searchToggle: document.getElementById('search-toggle'), searchBar: document.getElementById('search-bar'),
         searchInput: document.getElementById('search-input'), searchCount: document.getElementById('search-count'),
-        searchClose: document.getElementById('search-close'), searchResults: document.getElementById('search-results')
+        searchClose: document.getElementById('search-close'), searchResults: document.getElementById('search-results'),
+
+        levelFilter: document.getElementById('level-filter'), lessonFilter: document.getElementById('lesson-filter')
     };
 
     // --- INIT ---
@@ -297,6 +331,9 @@
             el.bottomBar.style.display = 'grid';
             loadState();
             updateUILocale();
+            // Default to All Levels / All Lessons on every load
+            filterLevel = ''; filterLesson = '';
+            el.levelFilter.value = ''; el.lessonFilter.value = '';
             let start = pickDueIndex(-1);
             if(start === -1) start = 0;
             loadWord(start);
@@ -380,7 +417,7 @@
     }
 
     function loadWord(idx) {
-        if(db.length === 0) return;
+        if(db.length === 0 || idx === -1) return;
         curIdx = idx;
         ansRevealed = false; transRevealed = false;
         el.meanArea.style.display = 'none';
@@ -597,15 +634,30 @@
         el.intEasy.innerText  = formatInterval(previewDelta(c, 'easy'));
     }
 
+    // Get indices of words matching current filters
+    function getFilteredIndices() {
+        const filtered = [];
+        for(let i = 0; i < db.length; i++) {
+            const w = db[i];
+            const matchLevel = !filterLevel || w.level === filterLevel;
+            const matchLesson = !filterLesson || w.lesson === parseInt(filterLesson);
+            if(matchLevel && matchLesson) {
+                filtered.push(i);
+            }
+        }
+        return filtered;
+    }
+
     // Pick the card whose due time is earliest (Anki-style queue).
     function pickDueIndex(excludeIdx) {
+        const filteredIndices = getFilteredIndices();
         let bestIdx = -1, bestDue = Infinity;
-        for(let i = 0; i < db.length; i++) {
+        for(let i of filteredIndices) {
             if(i === excludeIdx) continue;
             const due = getCard(db[i].id).due || 0;
             if(due < bestDue) { bestDue = due; bestIdx = i; }
         }
-        return bestIdx;
+        return filteredIndices.length > 0 ? (bestIdx === -1 ? filteredIndices[0] : bestIdx) : -1;
     }
 
     function processAnswer(rating) {
@@ -634,6 +686,31 @@
         writers.forEach(w => {
             if(w) w.animateCharacter();
         });
+    }
+
+    // Move to the previous/next word WITHIN the current filter set (dir = -1 or +1)
+    function gotoRelative(dir) {
+        const filtered = getFilteredIndices();
+        if(filtered.length === 0) return;
+        let pos = filtered.indexOf(curIdx);
+        pos = pos === -1 ? 0 : (pos + dir + filtered.length) % filtered.length;
+        loadWord(filtered[pos]);
+    }
+
+    // Re-evaluate filters: show a word if any match, otherwise show the empty state.
+    function applyFilterChange() {
+        const filtered = getFilteredIndices();
+        if(filtered.length === 0) {
+            el.app.style.display = 'none';
+            el.bottomBar.style.display = 'none';
+            el.noMatch.style.display = 'block';
+            return;
+        }
+        el.noMatch.style.display = 'none';
+        el.app.style.display = 'flex';
+        el.bottomBar.style.display = 'grid';
+        let next = pickDueIndex(-1);
+        if(next !== -1) loadWord(next);
     }
 
     // --- SEARCH (by hanzi, pinyin, or meaning) ---
@@ -767,6 +844,17 @@
         renderWord();
     });
 
+    // Filter by Level and Lesson
+    el.levelFilter.addEventListener('change', () => {
+        filterLevel = el.levelFilter.value;
+        applyFilterChange();
+    });
+
+    el.lessonFilter.addEventListener('change', () => {
+        filterLesson = el.lessonFilter.value;
+        applyFilterChange();
+    });
+
     // --- KEYBOARD BINDINGS (VIM STYLE) ---
     document.addEventListener('keydown', (e) => {
         if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
@@ -776,8 +864,8 @@
             case ' ': e.preventDefault(); toggleAnswer(); break;
             case '/': e.preventDefault(); openSearch(); break;
             case 't': toggleTrans(); break;
-            case 'h': if(db.length > 0) { curIdx = (curIdx - 1 + db.length) % db.length; loadWord(curIdx); } break;
-            case 'l': if(db.length > 0) { curIdx = (curIdx + 1) % db.length; loadWord(curIdx); } break;
+            case 'h': gotoRelative(-1); break;
+            case 'l': gotoRelative(1); break;
             case 'r': replayAllStrokes(); break;
             case 's': if(db.length > 0) speak(db[curIdx].hanzi); break;
             case '1': processAnswer('again'); break;
