@@ -7407,5 +7407,1214 @@
         "vi": "Ký túc xá rất lớn."
       }
     ]
+  },
+  {
+    "id": "1",
+    "hanzi": "今天",
+    "pinyin": "jīntiān",
+    "level": "HSK 1",
+    "lesson": 8,
+    "mean_en": "today",
+    "mean_vi": "hôm nay",
+    "pos_en": "Noun",
+    "pos_vi": "Danh từ",
+    "sentences": [
+      {
+        "hanzi": "今天是星期一。",
+        "pinyin": "Jīntiān shì xīngqīyī.",
+        "en": "Today is Monday.",
+        "vi": "Hôm nay là thứ Hai."
+      },
+      {
+        "hanzi": "今天天气很好。",
+        "pinyin": "Jīntiān tiānqì hěn hǎo.",
+        "en": "The weather is very good today.",
+        "vi": "Thời tiết hôm nay rất đẹp."
+      },
+      {
+        "hanzi": "你今天忙吗？",
+        "pinyin": "Nǐ jīntiān máng ma?",
+        "en": "Are you busy today?",
+        "vi": "Hôm nay bạn bận không?"
+      }
+    ]
+  },
+  {
+    "id": "2",
+    "hanzi": "月",
+    "pinyin": "yuè",
+    "level": "HSK 1",
+    "lesson": 8,
+    "mean_en": "month / moon",
+    "mean_vi": "tháng / mặt trăng",
+    "pos_en": "Noun",
+    "pos_vi": "Danh từ",
+    "sentences": [
+      {
+        "hanzi": "现在是九月。",
+        "pinyin": "Xiànzài shì jiǔ yuè.",
+        "en": "It is September now.",
+        "vi": "Bây giờ là tháng Chín."
+      },
+      {
+        "hanzi": "我下个月去北京。",
+        "pinyin": "Wǒ xià gè yuè qù Běijīng.",
+        "en": "I am going to Beijing next month.",
+        "vi": "Tháng sau tôi đi Bắc Kinh."
+      },
+      {
+        "hanzi": "一年有十二个月。",
+        "pinyin": "Yī nián yǒu shí'èr gè yuè.",
+        "en": "There are twelve months in a year.",
+        "vi": "Một năm có mười hai tháng."
+      }
+    ]
+  },
+  {
+    "id": "3",
+    "hanzi": "日",
+    "pinyin": "rì",
+    "level": "HSK 1",
+    "lesson": 8,
+    "mean_en": "day / date / sun",
+    "mean_vi": "ngày / mặt trời",
+    "pos_en": "Noun",
+    "pos_vi": "Danh từ",
+    "sentences": [
+      {
+        "hanzi": "今天是十月一号（日）。",
+        "pinyin": "Jīntiān shì shí yuè yī hào (rì).",
+        "en": "Today is October 1st.",
+        "vi": "Hôm nay là ngày 1 tháng 10."
+      },
+      {
+        "hanzi": "五月二十日是我的生日。",
+        "pinyin": "Wǔ yuè èrshí rì shì wǒ de shēngrì.",
+        "en": "May 20th is my birthday.",
+        "vi": "Ngày 20 tháng 5 là sinh nhật của tôi."
+      },
+      {
+        "hanzi": "今天是几月几日？",
+        "pinyin": "Jīntiān shì jǐ yuè jǐ rì?",
+        "en": "What is the date today?",
+        "vi": "Hôm nay là ngày mấy tháng mấy?"
+      }
+    ]
+  },
+  {
+    "id": "4",
+    "hanzi": "星期",
+    "pinyin": "xīngqī",
+    "level": "HSK 1",
+    "lesson": 8,
+    "mean_en": "week",
+    "mean_vi": "tuần / thứ",
+    "pos_en": "Noun",
+    "pos_vi": "Danh từ",
+    "sentences": [
+      {
+        "hanzi": "一个星期有七天。",
+        "pinyin": "Yī gè xīngqī yǒu qī tiān.",
+        "en": "There are seven days in a week.",
+        "vi": "Một tuần có bảy ngày."
+      },
+      {
+        "hanzi": "下个星期我们考试。",
+        "pinyin": "Xià gè xīngqī wǒmen kǎoshì.",
+        "en": "We have an exam next week.",
+        "vi": "Tuần sau chúng tôi thi."
+      },
+      {
+        "hanzi": "今天星期几？",
+        "pinyin": "Jīntiān xīngqī jǐ?",
+        "en": "What day of the week is it today?",
+        "vi": "Hôm nay là thứ mấy?"
+      }
+    ]
+  },
+  {
+    "id": "5",
+    "hanzi": "星期一",
+    "pinyin": "xīngqīyī",
+    "level": "HSK 1",
+    "lesson": 8,
+    "mean_en": "Monday",
+    "mean_vi": "thứ Hai",
+    "pos_en": "Noun",
+    "pos_vi": "Danh từ",
+    "sentences": [
+      {
+        "hanzi": "我星期一有中文课。",
+        "pinyin": "Wǒ xīngqīyī yǒu zhōngwén kè.",
+        "en": "I have Chinese class on Monday.",
+        "vi": "Tôi có tiết tiếng Trung vào thứ Hai."
+      },
+      {
+        "hanzi": "星期一我很忙。",
+        "pinyin": "Xīngqīyī wǒ hěn máng.",
+        "en": "I am very busy on Monday.",
+        "vi": "Thứ Hai tôi rất bận."
+      },
+      {
+        "hanzi": "明天是星期一吗？",
+        "pinyin": "Míngtiān shì xīngqīyī ma?",
+        "en": "Is tomorrow Monday?",
+        "vi": "Ngày mai là thứ Hai phải không?"
+      }
+    ]
+  },
+  {
+    "id": "6",
+    "hanzi": "星期二",
+    "pinyin": "xīngqī'èr",
+    "level": "HSK 1",
+    "lesson": 8,
+    "mean_en": "Tuesday",
+    "mean_vi": "thứ Ba",
+    "pos_en": "Noun",
+    "pos_vi": "Danh từ",
+    "sentences": [
+      {
+        "hanzi": "星期二下午我们去图书馆。",
+        "pinyin": "Xīngqī'èr xiàwǔ wǒmen qù túshūguǎn.",
+        "en": "We are going to the library on Tuesday afternoon.",
+        "vi": "Chiều thứ Ba chúng tôi đi thư viện."
+      },
+      {
+        "hanzi": "他星期二不来学校。",
+        "pinyin": "Tā xīngqī'èr bù lái xuéxiào.",
+        "en": "He doesn't come to school on Tuesday.",
+        "vi": "Thứ Ba anh ấy không đến trường."
+      },
+      {
+        "hanzi": "今天是星期二。",
+        "pinyin": "Jīntiān shì xīngqī'èr.",
+        "en": "Today is Tuesday.",
+        "vi": "Hôm nay là thứ Ba."
+      }
+    ]
+  },
+  {
+    "id": "7",
+    "hanzi": "星期三",
+    "pinyin": "xīngqīsān",
+    "level": "HSK 1",
+    "lesson": 8,
+    "mean_en": "Wednesday",
+    "mean_vi": "thứ Tư",
+    "pos_en": "Noun",
+    "pos_vi": "Danh từ",
+    "sentences": [
+      {
+        "hanzi": "星期三晚上我们一起吃饭吧。",
+        "pinyin": "Xīngqīsān wǎnshang wǒmen yīqǐ chīfàn ba.",
+        "en": "Let's have dinner together on Wednesday evening.",
+        "vi": "Tối thứ Tư chúng ta cùng ăn cơm nhé."
+      },
+      {
+        "hanzi": "他星期三去买书。",
+        "pinyin": "Tā xīngqīsān qù mǎi shū.",
+        "en": "He goes to buy books on Wednesday.",
+        "vi": "Thứ Tư anh ấy đi mua sách."
+      },
+      {
+        "hanzi": "星期三是他的生日。",
+        "pinyin": "Xīngqīsān shì tā de shēngrì.",
+        "en": "Wednesday is his birthday.",
+        "vi": "Thứ Tư là sinh nhật của anh ấy."
+      }
+    ]
+  },
+  {
+    "id": "8",
+    "hanzi": "星期四",
+    "pinyin": "xīngqīsì",
+    "level": "HSK 1",
+    "lesson": 8,
+    "mean_en": "Thursday",
+    "mean_vi": "thứ Năm",
+    "pos_en": "Noun",
+    "pos_vi": "Danh từ",
+    "sentences": [
+      {
+        "hanzi": "星期四见！",
+        "pinyin": "Xīngqīsì jiàn!",
+        "en": "See you on Thursday!",
+        "vi": "Hẹn gặp lại vào thứ Năm!"
+      },
+      {
+        "hanzi": "星期四我们不上课。",
+        "pinyin": "Xīngqīsì wǒmen bù shàngkè.",
+        "en": "We don't have class on Thursday.",
+        "vi": "Thứ Năm chúng tôi không đi học."
+      },
+      {
+        "hanzi": "昨天是星期四。",
+        "pinyin": "Zuótiān shì xīngqīsì.",
+        "en": "Yesterday was Thursday.",
+        "vi": "Hôm qua là thứ Năm."
+      }
+    ]
+  },
+  {
+    "id": "9",
+    "hanzi": "星期五",
+    "pinyin": "xīngqīwǔ",
+    "level": "HSK 1",
+    "lesson": 8,
+    "mean_en": "Friday",
+    "mean_vi": "thứ Sáu",
+    "pos_en": "Noun",
+    "pos_vi": "Danh từ",
+    "sentences": [
+      {
+        "hanzi": "星期五我想去买衣服。",
+        "pinyin": "Xīngqīwǔ wǒ xiǎng qù mǎi yīfu.",
+        "en": "I want to go clothes shopping on Friday.",
+        "vi": "Thứ Sáu tôi muốn đi mua quần áo."
+      },
+      {
+        "hanzi": "今天星期五，我很开心。",
+        "pinyin": "Jīntiān xīngqīwǔ, wǒ hěn kāixīn.",
+        "en": "Today is Friday, I am very happy.",
+        "vi": "Hôm nay thứ Sáu, tôi rất vui."
+      },
+      {
+        "hanzi": "星期五下课后你做什么？",
+        "pinyin": "Xīngqīwǔ xiàkè hòu nǐ zuò shénme?",
+        "en": "What do you do after class on Friday?",
+        "vi": "Sau khi tan học thứ Sáu bạn làm gì?"
+      }
+    ]
+  },
+  {
+    "id": "10",
+    "hanzi": "星期六",
+    "pinyin": "xīngqīliù",
+    "level": "HSK 1",
+    "lesson": 8,
+    "mean_en": "Saturday",
+    "mean_vi": "thứ Bảy",
+    "pos_en": "Noun",
+    "pos_vi": "Danh từ",
+    "sentences": [
+      {
+        "hanzi": "星期六我不去学校。",
+        "pinyin": "Xīngqīliù wǒ bù qù xuéxiào.",
+        "en": "I don't go to school on Saturday.",
+        "vi": "Thứ Bảy tôi không đi học."
+      },
+      {
+        "hanzi": "星期六你有时间吗？",
+        "pinyin": "Xīngqīliù nǐ yǒu shíjiān ma?",
+        "en": "Do you have time on Saturday?",
+        "vi": "Thứ Bảy bạn có thời gian không?"
+      },
+      {
+        "hanzi": "星期六我们在家看书。",
+        "pinyin": "Xīngqīliù wǒmen zài jiā kàn shū.",
+        "en": "We read books at home on Saturday.",
+        "vi": "Thứ Bảy chúng tôi ở nhà đọc sách."
+      }
+    ]
+  },
+  {
+    "id": "11",
+    "hanzi": "星期日",
+    "pinyin": "xīngqīrì",
+    "level": "HSK 1",
+    "lesson": 8,
+    "mean_en": "Sunday",
+    "mean_vi": "Chủ Nhật",
+    "pos_en": "Noun",
+    "pos_vi": "Danh từ",
+    "sentences": [
+      {
+        "hanzi": "星期日（天）你想去哪儿？",
+        "pinyin": "Xīngqīrì (tiān) nǐ xiǎng qù nǎr?",
+        "en": "Where do you want to go on Sunday?",
+        "vi": "Chủ Nhật bạn muốn đi đâu?"
+      },
+      {
+        "hanzi": "我星期日去中国朋友家。",
+        "pinyin": "Wǒ xīngqīrì qù Zhōngguó péngyou jiā.",
+        "en": "I am going to my Chinese friend's house on Sunday.",
+        "vi": "Chủ Nhật tôi đến nhà bạn người Trung Quốc."
+      },
+      {
+        "hanzi": "今天不是星期天。",
+        "pinyin": "Jīntiān bù shì xīngqītiān.",
+        "en": "Today is not Sunday.",
+        "vi": "Hôm nay không phải là Chủ Nhật."
+      }
+    ]
+  },
+  {
+    "id": "12",
+    "hanzi": "的",
+    "pinyin": "de",
+    "level": "HSK 1",
+    "lesson": 8,
+    "mean_en": "possessive particle ('s / of)",
+    "mean_vi": "của (trợ từ kết cấu)",
+    "pos_en": "Particle",
+    "pos_vi": "Trợ từ",
+    "sentences": [
+      {
+        "hanzi": "这是我的书。",
+        "pinyin": "Zhè shì wǒ de shū.",
+        "en": "This is my book.",
+        "vi": "Đây là sách của tôi."
+      },
+      {
+        "hanzi": "他的衣服很漂亮。",
+        "pinyin": "Tā de yīfu hěn piàoliang.",
+        "en": "His clothes are very nice.",
+        "vi": "Quần áo của anh ấy rất đẹp."
+      },
+      {
+        "hanzi": "这是谁的笔？",
+        "pinyin": "Zhè shì shéi de bǐ?",
+        "en": "Whose pen is this?",
+        "vi": "Đây là bút của ai?"
+      }
+    ]
+  },
+  {
+    "id": "13",
+    "hanzi": "生日",
+    "pinyin": "shēngrì",
+    "level": "HSK 1",
+    "lesson": 8,
+    "mean_en": "birthday",
+    "mean_vi": "sinh nhật",
+    "pos_en": "Noun",
+    "pos_vi": "Danh từ",
+    "sentences": [
+      {
+        "hanzi": "祝你生日快乐！",
+        "pinyin": "Zhù nǐ shēngrì kuàilè!",
+        "en": "Happy birthday to you!",
+        "vi": "Chúc bạn sinh nhật vui vẻ!"
+      },
+      {
+        "hanzi": "你的生日是几月几号？",
+        "pinyin": "Nǐ de shēngrì shì jǐ yuè jǐ hào?",
+        "en": "What date is your birthday?",
+        "vi": "Sinh nhật bạn là ngày mấy tháng mấy?"
+      },
+      {
+        "hanzi": "明天是我妈妈的生日。",
+        "pinyin": "Míngtiān shì wǒ māma de shēngrì.",
+        "en": "Tomorrow is my mother's birthday.",
+        "vi": "Ngày mai là sinh nhật mẹ tôi."
+      }
+    ]
+  },
+  {
+    "id": "14",
+    "hanzi": "下课",
+    "pinyin": "xiàkè",
+    "level": "HSK 1",
+    "lesson": 8,
+    "mean_en": "to finish class / class is over",
+    "mean_vi": "tan học / tan lớp",
+    "pos_en": "Verb",
+    "pos_vi": "Động từ",
+    "sentences": [
+      {
+        "hanzi": "我们十二点下课。",
+        "pinyin": "Wǒmen shí'èr diǎn xiàkè.",
+        "en": "We finish class at twelve o'clock.",
+        "vi": "Chúng tôi tan học lúc 12 giờ."
+      },
+      {
+        "hanzi": "下课以后你想去哪儿？",
+        "pinyin": "Xiàkè yǐhòu nǐ xiǎng qù nǎr?",
+        "en": "Where do you want to go after class?",
+        "vi": "Sau khi tan học bạn muốn đi đâu?"
+      },
+      {
+        "hanzi": "老师说：“现在下课。”",
+        "pinyin": "Lǎoshī shuō: \"Xiànzài xiàkè.\"",
+        "en": "The teacher said: 'Class is dismissed now.'",
+        "vi": "Thầy giáo nói: 'Bây giờ tan học.'"
+      }
+    ]
+  },
+  {
+    "id": "15",
+    "hanzi": "以后",
+    "pinyin": "yǐhòu",
+    "level": "HSK 2",
+    "lesson": 8,
+    "mean_en": "after / afterwards / later",
+    "mean_vi": "sau khi / sau này",
+    "pos_en": "Noun",
+    "pos_vi": "Danh từ",
+    "sentences": [
+      {
+        "hanzi": "吃饭以后我们去喝茶吧。",
+        "pinyin": "Chīfàn yǐhòu wǒmen qù hē chá ba.",
+        "en": "Let's go drink tea after eating.",
+        "vi": "Sau khi ăn cơm chúng ta đi uống trà nhé."
+      },
+      {
+        "hanzi": "以后你想去中国吗？",
+        "pinyin": "Yǐhòu nǐ xiǎng qù Zhōngguó ma?",
+        "en": "Do you want to go to China in the future?",
+        "vi": "Sau này bạn có muốn đi Trung Quốc không?"
+      },
+      {
+        "hanzi": "三点以后我都在家。",
+        "pinyin": "Sān diǎn yǐhòu wǒ dōu zài jiā.",
+        "en": "I will be at home after three o'clock.",
+        "vi": "Sau 3 giờ tôi đều ở nhà."
+      }
+    ]
+  },
+  {
+    "id": "16",
+    "hanzi": "准备",
+    "pinyin": "zhǔnbèi",
+    "level": "HSK 2",
+    "lesson": 8,
+    "mean_en": "to prepare / to get ready",
+    "mean_vi": "chuẩn bị",
+    "pos_en": "Verb",
+    "pos_vi": "Động từ",
+    "sentences": [
+      {
+        "hanzi": "我正在准备生日礼物。",
+        "pinyin": "Wǒ zhèngzài zhǔnbèi shēngrì lǐwù.",
+        "en": "I am preparing a birthday gift.",
+        "vi": "Tôi đang chuẩn bị quà sinh nhật."
+      },
+      {
+        "hanzi": "你准备好了吗？",
+        "pinyin": "Nǐ zhǔnbèi hǎo le ma?",
+        "en": "Are you ready?",
+        "vi": "Bạn đã chuẩn bị xong chưa?"
+      },
+      {
+        "hanzi": "我们要准备中文考试。",
+        "pinyin": "Wǒmen yào zhǔnbèi zhōngwén kǎoshì.",
+        "en": "We need to prepare for the Chinese exam.",
+        "vi": "Chúng tôi cần chuẩn bị cho kỳ thi tiếng Trung."
+      }
+    ]
+  },
+  {
+    "id": "17",
+    "hanzi": "请",
+    "pinyin": "qǐng",
+    "level": "HSK 1",
+    "lesson": 8,
+    "mean_en": "to invite / please / to treat",
+    "mean_vi": "mời / xin / bao (đãi)",
+    "pos_en": "Verb",
+    "pos_vi": "Động từ",
+    "sentences": [
+      {
+        "hanzi": "今天我请你吃饭。",
+        "pinyin": "Jīntiān wǒ qǐng nǐ chīfàn.",
+        "en": "Today I treat you to a meal.",
+        "vi": "Hôm nay tôi mời bạn ăn cơm."
+      },
+      {
+        "hanzi": "请坐，请喝茶。",
+        "pinyin": "Qǐng zuò, qǐng hē chá.",
+        "en": "Please sit down and please drink tea.",
+        "vi": "Xin mời ngồi, xin mời uống trà."
+      },
+      {
+        "hanzi": "他请我参加他的生日晚会。",
+        "pinyin": "Tā qǐng wǒ cānjiā tā de shēngrì wǎnhuì.",
+        "en": "He invited me to his birthday party.",
+        "vi": "Anh ấy mời tôi tham gia tiệc sinh nhật."
+      }
+    ]
+  },
+  {
+    "id": "18",
+    "hanzi": "吃",
+    "pinyin": "chī",
+    "level": "HSK 1",
+    "lesson": 8,
+    "mean_en": "to eat",
+    "mean_vi": "ăn",
+    "pos_en": "Verb",
+    "pos_vi": "Động từ",
+    "sentences": [
+      {
+        "hanzi": "你想吃什么？",
+        "pinyin": "Nǐ xiǎng chī shénme?",
+        "en": "What do you want to eat?",
+        "vi": "Bạn muốn ăn gì?"
+      },
+      {
+        "hanzi": "中国菜很好吃。",
+        "pinyin": "Zhōngguó cài hěn hǎochī.",
+        "en": "Chinese food is very delicious.",
+        "vi": "Món ăn Trung Quốc rất ngon."
+      },
+      {
+        "hanzi": "我吃了两个苹果。",
+        "pinyin": "Wǒ chī le liǎng gè píngguǒ.",
+        "en": "I ate two apples.",
+        "vi": "Tôi đã ăn hai quả táo."
+      }
+    ]
+  },
+  {
+    "id": "19",
+    "hanzi": "饭",
+    "pinyin": "fàn",
+    "level": "HSK 1",
+    "lesson": 8,
+    "mean_en": "meal / cooked rice",
+    "mean_vi": "cơm / bữa ăn",
+    "pos_en": "Noun",
+    "pos_vi": "Danh từ",
+    "sentences": [
+      {
+        "hanzi": "你吃饭了吗？",
+        "pinyin": "Nǐ chīfàn le ma?",
+        "en": "Have you eaten yet?",
+        "vi": "Bạn ăn cơm chưa?"
+      },
+      {
+        "hanzi": "我们中午十二点吃午饭。",
+        "pinyin": "Wǒmen zhōngwǔ shí'èr diǎn chī wǔfàn.",
+        "en": "We eat lunch at twelve noon.",
+        "vi": "Chúng tôi ăn trưa lúc 12 giờ trưa."
+      },
+      {
+        "hanzi": "妈妈在做饭。",
+        "pinyin": "Māma zài zuò fàn.",
+        "en": "Mother is cooking a meal.",
+        "vi": "Mẹ đang nấu cơm."
+      }
+    ]
+  },
+  {
+    "id": "20",
+    "hanzi": "祝",
+    "pinyin": "zhù",
+    "level": "HSK 2",
+    "lesson": 8,
+    "mean_en": "to wish / to express good wishes",
+    "mean_vi": "chúc",
+    "pos_en": "Verb",
+    "pos_vi": "Động từ",
+    "sentences": [
+      {
+        "hanzi": "祝你天天开心！",
+        "pinyin": "Zhù nǐ tiāntiān kāixīn!",
+        "en": "Wish you happy every day!",
+        "vi": "Chúc bạn mỗi ngày đều vui vẻ!"
+      },
+      {
+        "hanzi": "祝你身体健康。",
+        "pinyin": "Zhù nǐ shēntǐ jiànkāng.",
+        "en": "Wish you good health.",
+        "vi": "Chúc bạn sức khỏe dồi dào."
+      },
+      {
+        "hanzi": "祝你新年快乐！",
+        "pinyin": "Zhù nǐ xīnnián kuàilè!",
+        "en": "Wish you a happy New Year!",
+        "vi": "Chúc bạn năm mới vui vẻ!"
+      }
+    ]
+  },
+  {
+    "id": "21",
+    "hanzi": "快乐",
+    "pinyin": "kuàilè",
+    "level": "HSK 2",
+    "lesson": 8,
+    "mean_en": "happy / cheerful",
+    "mean_vi": "vui vẻ / hạnh phúc",
+    "pos_en": "Adjective",
+    "pos_vi": "Tính từ",
+    "sentences": [
+      {
+        "hanzi": "祝你生日快乐！",
+        "pinyin": "Zhù nǐ shēngrì kuàilè!",
+        "en": "Happy birthday to you!",
+        "vi": "Chúc bạn sinh nhật vui vẻ!"
+      },
+      {
+        "hanzi": "我们在一起很快乐。",
+        "pinyin": "Wǒmen zài yīqǐ hěn kuàilè.",
+        "en": "We are very happy together.",
+        "vi": "Chúng tôi ở bên nhau rất vui vẻ."
+      },
+      {
+        "hanzi": "学习中文是一件快乐的事。",
+        "pinyin": "Xuéxí zhōngwén shì yī jiàn kuàilè de shì.",
+        "en": "Learning Chinese is a joyful thing.",
+        "vi": "Học tiếng Trung là một việc vui vẻ."
+      }
+    ]
+  },
+  {
+    "id": "22",
+    "hanzi": "礼物",
+    "pinyin": "lǐwù",
+    "level": "HSK 2",
+    "lesson": 8,
+    "mean_en": "gift / present",
+    "mean_vi": "món quà / quà tặng",
+    "pos_en": "Noun",
+    "pos_vi": "Danh từ",
+    "sentences": [
+      {
+        "hanzi": "这是我送给你的礼物。",
+        "pinyin": "Zhè shì wǒ sòng gěi nǐ de lǐwù.",
+        "en": "This is a present I give to you.",
+        "vi": "Đây là món quà tôi tặng bạn."
+      },
+      {
+        "hanzi": "你喜欢这个礼物吗？",
+        "pinyin": "Nǐ xǐhuan zhè gè lǐwù ma?",
+        "en": "Do you like this gift?",
+        "vi": "Bạn có thích món quà này không?"
+      },
+      {
+        "hanzi": "他买了一份生日礼物。",
+        "pinyin": "Tā mǎi le yī fèn shēngrì lǐwù.",
+        "en": "He bought a birthday present.",
+        "vi": "Anh ấy đã mua một món quà sinh nhật."
+      }
+    ]
+  },
+  {
+    "id": "23",
+    "hanzi": "本",
+    "pinyin": "běn",
+    "level": "HSK 1",
+    "lesson": 8,
+    "mean_en": "measure word for books, magazines, etc.",
+    "mean_vi": "quyển / cuốn (lượng từ cho sách, vở)",
+    "pos_en": "Measure Word",
+    "pos_vi": "Lượng từ",
+    "sentences": [
+      {
+        "hanzi": "桌子上有一本书。",
+        "pinyin": "Zhuōzi shang yǒu yī běn shū.",
+        "en": "There is a book on the desk.",
+        "vi": "Trên bàn có một cuốn sách."
+      },
+      {
+        "hanzi": "我买了三本中文杂志。",
+        "pinyin": "Wǒ mǎi le sān běn zhōngwén zázhì.",
+        "en": "I bought three Chinese magazines.",
+        "vi": "Tôi đã mua ba cuốn tạp chí tiếng Trung."
+      },
+      {
+        "hanzi": "这本书不是我的。",
+        "pinyin": "Zhè běn shū bù shì wǒ de.",
+        "en": "This book is not mine.",
+        "vi": "Quyển sách này không phải của tôi."
+      }
+    ]
+  },
+  {
+    "id": "24",
+    "hanzi": "书",
+    "pinyin": "shū",
+    "level": "HSK 1",
+    "lesson": 8,
+    "mean_en": "book",
+    "mean_vi": "sách",
+    "pos_en": "Noun",
+    "pos_vi": "Danh từ",
+    "sentences": [
+      {
+        "hanzi": "我喜欢看书。",
+        "pinyin": "Wǒ xǐhuan kàn shū.",
+        "en": "I like reading books.",
+        "vi": "Tôi thích đọc sách."
+      },
+      {
+        "hanzi": "这本汉语书很有意思。",
+        "pinyin": "Zhè běn hànyǔ shū hěn yǒu yìsi.",
+        "en": "This Chinese book is very interesting.",
+        "vi": "Quyển sách tiếng Hán này rất thú vị."
+      },
+      {
+        "hanzi": "你在看什么书？",
+        "pinyin": "Nǐ zài kàn shénme shū?",
+        "en": "What book are you reading?",
+        "vi": "Bạn đang đọc sách gì thế?"
+      }
+    ]
+  },
+  {
+    "id": "25",
+    "hanzi": "支",
+    "pinyin": "zhī",
+    "level": "HSK 2",
+    "lesson": 8,
+    "mean_en": "measure word for pens, sticks, etc.",
+    "mean_vi": "cây / chiếc (lượng từ cho bút)",
+    "pos_en": "Measure Word",
+    "pos_vi": "Lượng từ",
+    "sentences": [
+      {
+        "hanzi": "请借给我一支笔。",
+        "pinyin": "Qǐng jiè gěi wǒ yī zhī bǐ.",
+        "en": "Please lend me a pen.",
+        "vi": "Xin hãy cho tôi mượn một cây bút."
+      },
+      {
+        "hanzi": "我买了两支毛笔。",
+        "pinyin": "Wǒ mǎi le liǎng zhī máobǐ.",
+        "en": "I bought two writing brushes.",
+        "vi": "Tôi đã mua hai cây bút lông."
+      },
+      {
+        "hanzi": "这支笔写字很好看。",
+        "pinyin": "Zhè zhī bǐ xiě zì hěn hǎokàn.",
+        "en": "This pen writes very nicely.",
+        "vi": "Cây bút này viết chữ rất đẹp."
+      }
+    ]
+  },
+  {
+    "id": "26",
+    "hanzi": "笔",
+    "pinyin": "bǐ",
+    "level": "HSK 2",
+    "lesson": 8,
+    "mean_en": "pen / pencil / writing instrument",
+    "mean_vi": "bút",
+    "pos_en": "Noun",
+    "pos_vi": "Danh từ",
+    "sentences": [
+      {
+        "hanzi": "你有笔吗？",
+        "pinyin": "Nǐ yǒu bǐ ma?",
+        "en": "Do you have a pen?",
+        "vi": "Bạn có bút không?"
+      },
+      {
+        "hanzi": "我的笔在书包里。",
+        "pinyin": "Wǒ de bǐ zài shūbāo lǐ.",
+        "en": "My pen is in the schoolbag.",
+        "vi": "Bút của tôi ở trong cặp sách."
+      },
+      {
+        "hanzi": "他用这支笔写汉字。",
+        "pinyin": "Tā yòng zhè zhī bǐ xiě hànzì.",
+        "en": "He uses this pen to write Chinese characters.",
+        "vi": "Anh ấy dùng cây bút này để viết chữ Hán."
+      }
+    ]
+  },
+  {
+    "id": "27",
+    "hanzi": "啊",
+    "pinyin": "a",
+    "level": "HSK 1",
+    "lesson": 8,
+    "mean_en": "modal particle expressing surprise or emphasis",
+    "mean_vi": "à / nha / nhé (trợ từ ngữ khí)",
+    "pos_en": "Particle",
+    "pos_vi": "Trợ từ",
+    "sentences": [
+      {
+        "hanzi": "这里的风景真美啊！",
+        "pinyin": "Zhèlǐ de fēngjǐng zhēn měi a!",
+        "en": "The scenery here is truly beautiful!",
+        "vi": "Phong cảnh nơi đây thật đẹp a!"
+      },
+      {
+        "hanzi": "快点走啊！",
+        "pinyin": "Kuài diǎn zǒu a!",
+        "en": "Walk faster!",
+        "vi": "Đi nhanh lên chứ!"
+      },
+      {
+        "hanzi": "好啊，我们一起去吧。",
+        "pinyin": "Hǎo a, wǒmen yīqǐ qù ba.",
+        "en": "Great, let's go together.",
+        "vi": "Được thôi, chúng mình cùng đi nhé."
+      }
+    ]
+  },
+  {
+    "id": "28",
+    "hanzi": "时间",
+    "pinyin": "shíjiān",
+    "level": "HSK 2",
+    "lesson": 8,
+    "mean_en": "time",
+    "mean_vi": "thời gian",
+    "pos_en": "Noun",
+    "pos_vi": "Danh từ",
+    "sentences": [
+      {
+        "hanzi": "你明天有时间吗？",
+        "pinyin": "Nǐ míngtiān yǒu shíjiān ma?",
+        "en": "Do you have time tomorrow?",
+        "vi": "Ngày mai bạn có thời gian không?"
+      },
+      {
+        "hanzi": "没时间了，快点吧！",
+        "pinyin": "Méi shíjiān le, kuài diǎn ba!",
+        "en": "No more time, hurry up!",
+        "vi": "Không còn thời gian nữa, nhanh lên nào!"
+      },
+      {
+        "hanzi": "我们没有很多时间。",
+        "pinyin": "Wǒmen méiyǒu hěn duō shíjiān.",
+        "en": "We don't have much time.",
+        "vi": "Chúng tôi không có nhiều thời gian."
+      }
+    ]
+  },
+  {
+    "id": "29",
+    "hanzi": "没问题",
+    "pinyin": "méi wèntí",
+    "level": "HSK 2",
+    "lesson": 8,
+    "mean_en": "no problem",
+    "mean_vi": "không có vấn đề gì / không sao",
+    "pos_en": "Phrase",
+    "pos_vi": "Cụm từ",
+    "sentences": [
+      {
+        "hanzi": "帮我买一本书，行吗？——没问题！",
+        "pinyin": "Bāng wǒ mǎi yī běn shū, xíng ma? —— Méi wèntí!",
+        "en": "Can you help me buy a book? — No problem!",
+        "vi": "Giúp tôi mua một cuốn sách được không? — Không vấn đề gì!"
+      },
+      {
+        "hanzi": "放心吧，这件事没问题。",
+        "pinyin": "Fàngxīn ba, zhè jiàn shì méi wèntí.",
+        "en": "Don't worry, this matter is no problem.",
+        "vi": "Yên tâm đi, việc này không vấn đề gì cả."
+      },
+      {
+        "hanzi": "明天八点集合，没问题吧？",
+        "pinyin": "Míngtiān bā diǎn jíhé, méi wèntí ba?",
+        "en": "Meeting tomorrow at 8 o'clock, no problem right?",
+        "vi": "Ngày mai 8 giờ tập hợp, không vấn đề gì chứ?"
+      }
+    ]
+  },
+  {
+    "id": "30",
+    "hanzi": "没有",
+    "pinyin": "méiyǒu",
+    "level": "HSK 1",
+    "lesson": 8,
+    "mean_en": "to not have / there is not",
+    "mean_vi": "không có / chưa",
+    "pos_en": "Verb",
+    "pos_vi": "Động từ",
+    "sentences": [
+      {
+        "hanzi": "我没有中文书。",
+        "pinyin": "Wǒ méiyǒu zhōngwén shū.",
+        "en": "I don't have Chinese books.",
+        "vi": "Tôi không có sách tiếng Trung."
+      },
+      {
+        "hanzi": "房间里没有人。",
+        "pinyin": "Fángjiān lǐ méiyǒu rén.",
+        "en": "There is no one in the room.",
+        "vi": "Trong phòng không có ai."
+      },
+      {
+        "hanzi": "他还没有吃早饭。",
+        "pinyin": "Tā hái méiyǒu chī zǎofàn.",
+        "en": "He hasn't eaten breakfast yet.",
+        "vi": "Anh ấy vẫn chưa ăn sáng."
+      }
+    ]
+  },
+  {
+    "id": "31",
+    "hanzi": "问题",
+    "pinyin": "wèntí",
+    "level": "HSK 2",
+    "lesson": 8,
+    "mean_en": "question / problem / issue",
+    "mean_vi": "câu hỏi / vấn đề",
+    "pos_en": "Noun",
+    "pos_vi": "Danh từ",
+    "sentences": [
+      {
+        "hanzi": "老师，我有一个问题。",
+        "pinyin": "Lǎoshī, wǒ yǒu yī gè wèntí.",
+        "en": "Teacher, I have a question.",
+        "vi": "Thưa thầy, em có một câu hỏi."
+      },
+      {
+        "hanzi": "这个数学问题很难。",
+        "pinyin": "Zhè gè shùxué wèntí hěn nán.",
+        "en": "This math problem is very difficult.",
+        "vi": "Câu hỏi toán học này rất khó."
+      },
+      {
+        "hanzi": "你回答一下这个问题吧。",
+        "pinyin": "Nǐ huídá yīxià zhè gè wèntí ba.",
+        "en": "Please answer this question.",
+        "vi": "Bạn hãy trả lời câu hỏi này đi."
+      }
+    ]
+  },
+  {
+    "id": "32",
+    "hanzi": "中文",
+    "pinyin": "zhōngwén",
+    "level": "HSK 1",
+    "lesson": 8,
+    "mean_en": "Chinese language",
+    "mean_vi": "tiếng Trung",
+    "pos_en": "Noun",
+    "pos_vi": "Danh từ",
+    "sentences": [
+      {
+        "hanzi": "你在哪儿学中文？",
+        "pinyin": "Nǐ zài nǎr xué zhōngwén?",
+        "en": "Where do you learn Chinese?",
+        "vi": "Bạn học tiếng Trung ở đâu?"
+      },
+      {
+        "hanzi": "他说中文说得很好。",
+        "pinyin": "Tā shuō zhōngwén shuō de hěn hǎo.",
+        "en": "He speaks Chinese very well.",
+        "vi": "Anh ấy nói tiếng Trung rất tốt."
+      },
+      {
+        "hanzi": "我喜欢听中文歌。",
+        "pinyin": "Wǒ xǐhuan tīng zhōngwén gē.",
+        "en": "I like listening to Chinese songs.",
+        "vi": "Tôi thích nghe bài hát tiếng Trung."
+      }
+    ]
+  },
+  {
+    "id": "33",
+    "hanzi": "明天",
+    "pinyin": "míngtiān",
+    "level": "HSK 1",
+    "lesson": 8,
+    "mean_en": "tomorrow",
+    "mean_vi": "ngày mai",
+    "pos_en": "Noun",
+    "pos_vi": "Danh từ",
+    "sentences": [
+      {
+        "hanzi": "明天见！",
+        "pinyin": "Míngtiān jiàn!",
+        "en": "See you tomorrow!",
+        "vi": "Ngày mai gặp lại!"
+      },
+      {
+        "hanzi": "明天上午我们有课。",
+        "pinyin": "Míngtiān shàngwǔ wǒmen yǒu kè.",
+        "en": "We have class tomorrow morning.",
+        "vi": "Sáng mai chúng tôi có tiết học."
+      },
+      {
+        "hanzi": "明天你想去买东西吗？",
+        "pinyin": "Míngtiān nǐ xiǎng qù mǎi dōngxi ma?",
+        "en": "Do you want to go shopping tomorrow?",
+        "vi": "Ngày mai bạn muốn đi mua sắm không?"
+      }
+    ]
+  },
+  {
+    "id": "34",
+    "hanzi": "后天",
+    "pinyin": "hòutiān",
+    "level": "HSK 2",
+    "lesson": 8,
+    "mean_en": "the day after tomorrow",
+    "mean_vi": "ngày kia",
+    "pos_en": "Noun",
+    "pos_vi": "Danh từ",
+    "sentences": [
+      {
+        "hanzi": "后天是星期日。",
+        "pinyin": "Hòutiān shì xīngqīrì.",
+        "en": "The day after tomorrow is Sunday.",
+        "vi": "Ngày kia là Chủ Nhật."
+      },
+      {
+        "hanzi": "后天我们去朋友家做客。",
+        "pinyin": "Hòutiān wǒmen qù péngyou jiā zuòkè.",
+        "en": "The day after tomorrow we will visit a friend's house.",
+        "vi": "Ngày kia chúng tôi đến nhà bạn làm khách."
+      },
+      {
+        "hanzi": "后天你有空吗？",
+        "pinyin": "Hòutiān nǐ yǒu kòng ma?",
+        "en": "Are you free the day after tomorrow?",
+        "vi": "Ngày kia bạn có rảnh không?"
+      }
+    ]
+  },
+  {
+    "id": "35",
+    "hanzi": "昨天",
+    "pinyin": "zuótiān",
+    "level": "HSK 1",
+    "lesson": 8,
+    "mean_en": "yesterday",
+    "mean_vi": "hôm qua",
+    "pos_en": "Noun",
+    "pos_vi": "Danh từ",
+    "sentences": [
+      {
+        "hanzi": "昨天下午我买了新衣服。",
+        "pinyin": "Zuótiān xiàwǔ wǒ mǎi le xīn yīfu.",
+        "en": "Yesterday afternoon I bought new clothes.",
+        "vi": "Chiều hôm qua tôi đã mua quần áo mới."
+      },
+      {
+        "hanzi": "昨天天气很冷。",
+        "pinyin": "Zuótiān tiānqì hěn lěng.",
+        "en": "The weather was very cold yesterday.",
+        "vi": "Hôm qua thời tiết rất lạnh."
+      },
+      {
+        "hanzi": "昨天你去哪儿了？",
+        "pinyin": "Zuótiān nǐ qù nǎr le?",
+        "en": "Where did you go yesterday?",
+        "vi": "Hôm qua bạn đã đi đâu?"
+      }
+    ]
+  },
+  {
+    "id": "36",
+    "hanzi": "前天",
+    "pinyin": "qiántiān",
+    "level": "HSK 2",
+    "lesson": 8,
+    "mean_en": "the day before yesterday",
+    "mean_vi": "hôm kia",
+    "pos_en": "Noun",
+    "pos_vi": "Danh từ",
+    "sentences": [
+      {
+        "hanzi": "前天是他二十岁的生日。",
+        "pinyin": "Qiántiān shì tā èrshí suì de shēngrì.",
+        "en": "The day before yesterday was his 20th birthday.",
+        "vi": "Hôm kia là sinh nhật tuổi 20 của anh ấy."
+      },
+      {
+        "hanzi": "前天我去看电影了。",
+        "pinyin": "Qiántiān wǒ qù kàn diànyǐng le.",
+        "en": "I went to watch a movie the day before yesterday.",
+        "vi": "Hôm kia tôi đã đi xem phim."
+      },
+      {
+        "hanzi": "他前天刚回国。",
+        "pinyin": "Tā qiántiān gāng huí guó.",
+        "en": "He just returned to the country the day before yesterday.",
+        "vi": "Anh ấy vừa về nước hôm kia."
+      }
+    ]
+  },
+  {
+    "id": "37",
+    "hanzi": "报纸",
+    "pinyin": "bàozhǐ",
+    "level": "HSK 2",
+    "lesson": 8,
+    "mean_en": "newspaper",
+    "mean_vi": "báo / tờ báo",
+    "pos_en": "Noun",
+    "pos_vi": "Danh từ",
+    "sentences": [
+      {
+        "hanzi": "爸爸每天早上看报纸。",
+        "pinyin": "Bàba měitiān zǎoshang kàn bàozhǐ.",
+        "en": "Dad reads the newspaper every morning.",
+        "vi": "Bố đọc báo vào mỗi buổi sáng."
+      },
+      {
+        "hanzi": "桌子上有一份报纸。",
+        "pinyin": "Zhuōzi shang yǒu yī fèn bàozhǐ.",
+        "en": "There is a newspaper on the desk.",
+        "vi": "Trên bàn có một tờ báo."
+      },
+      {
+        "hanzi": "这是今天的报纸吗？",
+        "pinyin": "Zhè shì jīntiān de bàozhǐ ma?",
+        "en": "Is this today's newspaper?",
+        "vi": "Đây là báo của ngày hôm nay phải không?"
+      }
+    ]
+  },
+  {
+    "id": "38",
+    "hanzi": "杂志",
+    "pinyin": "zázhì",
+    "level": "HSK 2",
+    "lesson": 8,
+    "mean_en": "magazine",
+    "mean_vi": "tạp chí",
+    "pos_en": "Noun",
+    "pos_vi": "Danh từ",
+    "sentences": [
+      {
+        "hanzi": "我看过这本杂志。",
+        "pinyin": "Wǒ kànguò zhè běn zázhì.",
+        "en": "I have read this magazine.",
+        "vi": "Tôi từng đọc cuốn tạp chí này rồi."
+      },
+      {
+        "hanzi": "他买了一本中文杂志。",
+        "pinyin": "Tā mǎi le yī běn zhōngwén zázhì.",
+        "en": "He bought a Chinese magazine.",
+        "vi": "Anh ấy đã mua một cuốn tạp chí tiếng Trung."
+      },
+      {
+        "hanzi": "你在看什么杂志？",
+        "pinyin": "Nǐ zài kàn shénme zázhì?",
+        "en": "What magazine are you reading?",
+        "vi": "Bạn đang đọc tạp chí gì vậy?"
+      }
+    ]
+  },
+  {
+    "id": "39",
+    "hanzi": "衣服",
+    "pinyin": "yīfu",
+    "level": "HSK 1",
+    "lesson": 8,
+    "mean_en": "clothes / clothing",
+    "mean_vi": "quần áo",
+    "pos_en": "Noun",
+    "pos_vi": "Danh từ",
+    "sentences": [
+      {
+        "hanzi": "这件衣服很漂亮。",
+        "pinyin": "Zhè jiàn yīfu hěn piàoliang.",
+        "en": "This piece of clothing is very pretty.",
+        "vi": "Bộ quần áo này rất đẹp."
+      },
+      {
+        "hanzi": "今天我想去买衣服。",
+        "pinyin": "Jīntiān wǒ xiǎng qù mǎi yīfu.",
+        "en": "Today I want to go buy clothes.",
+        "vi": "Hôm nay tôi muốn đi mua quần áo."
+      },
+      {
+        "hanzi": "妈妈在洗衣服。",
+        "pinyin": "Māma zài xǐ yīfu.",
+        "en": "Mother is washing clothes.",
+        "vi": "Mẹ đang giặt quần áo."
+      }
+    ]
   }
 ]
